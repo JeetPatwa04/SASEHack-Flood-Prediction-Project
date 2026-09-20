@@ -49,9 +49,6 @@ export default function Dashboard() {
             </div>
           ))}
         </div>
-
-        <div className="mx-auto mt-8 max-w-5xl">
-        </div>
       </div>
     </div>
   );

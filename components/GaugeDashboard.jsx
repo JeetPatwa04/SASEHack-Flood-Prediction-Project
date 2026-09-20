@@ -301,8 +301,8 @@ export default function GaugeDashboard() {
 
   useEffect(() => {
     Promise.all([
-      fetch("/data/results/latest.json").then(r => r.json()),
-      fetch("/data/results/scores.json").then(r => r.json()),
+      fetch("/api/gauges").then(r => r.json()).then(async d => { const details = await Promise.all(d.gauges.map(g => fetch(`/api/gauges/${g.site_id}`).then(r => r.json()))); return { ...d, gauges: details.map(d => d.gauge) }; }),
+      fetch("/api/scores").then(r => r.json()),
     ])
       .then(([lat, sc]) => {
         setData(lat);
