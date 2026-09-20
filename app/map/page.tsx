@@ -33,12 +33,14 @@ export default function InteractiveMap() {
       if (d.gauges.length) setSelectedId(d.gauges[0].site_id);
     });
   }, []);
-
+  
   useEffect(() => {
     if (!selectedId) return;
-    fetch(`/api/gauges/${selectedId}`).then((r) => r.json()).then(setDetail);
+    const load = () => fetch(`/api/gauges/${selectedId}`).then((r) => r.json()).then(setDetail);
+    load();
+    const interval = setInterval(load, 5 * 60 * 1000); // re-fetches every 5 minutes
+    return () => clearInterval(interval);
   }, [selectedId]);
-
   const chartData = useMemo(() => {
     if (!detail) return [];
     const observed = detail.gauge.observed.slice(-24).map((p) => ({
@@ -92,11 +94,11 @@ export default function InteractiveMap() {
               )}
             </div>
             <div className="flex-1 rounded-[32px] bg-white p-4">
-              <span className="mb-2 inline-block rounded-full bg-[#ffa600] px-4 py-1 font-potta text-xs text-white">CHART</span>
+              <span className="mb-2 inline-block rounded-full bg-[#ffa600] px-4 py-1 font-potta text-xs text-white">River Level Forecast</span>
               <ResponsiveContainer width="100%" height={200}>
                 <LineChart data={chartData}>
-                  <XAxis dataKey="time" tick={{ fontSize: 10 }} />
-                  <YAxis tick={{ fontSize: 10 }} />
+                  <XAxis dataKey="time" tick={{ fontSize: 10 }} label={{ value: "Time", position: "insideBottom", offset: -2, fontSize: 11 }} />
+                  <YAxis tick={{ fontSize: 10 }} label={{ value: "Stage (ft)", angle: -90, position: "insideLeft", fontSize: 11 }} />
                   <Tooltip />
                   {detail && (
                     <ReferenceLine y={detail.gauge.thresholds_ft.minor} stroke="#ff9800" strokeDasharray="4 4" label={{ value: "Minor", fontSize: 10 }} />
