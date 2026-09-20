@@ -221,3 +221,4 @@ data/raw/
 data/plots/
 .DS_Store
 data/results/synthetic_*.json
+models/
