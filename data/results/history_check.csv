@@ -1,0 +1,16 @@
+site_id,parameter,kind,primary,begin,end,years,days_since_last,sublocation,data_gap_interval,series_id
+USGS-02026000,flow (cfs),continuous,Primary,1990-10-01,2026-09-19,36.0,0,,PT1H12M,7475f2868afd40bd847932ccee7e5ce3
+USGS-02026000,flow (cfs),daily mean,Primary,1925-04-01,2026-09-17,101.5,2,,,d3dd74e70064419997faef845f4432ef
+USGS-02026000,stage (ft),continuous,Primary,2007-10-01,2026-09-19,19.0,0,,PT1H12M,ba7ac0b3e7914118b9efb41431224272
+USGS-02035000,flow (cfs),continuous,Primary,1994-10-01,2026-09-19,32.0,0,,PT1H12M,cb2fa837e92043daab46eee1a9161919
+USGS-02035000,flow (cfs),daily mean,Primary,1899-01-01,2026-09-17,127.7,2,,,82f0651868514c99aca948e412e3c1db
+USGS-02035000,stage (ft),continuous,Primary,2007-10-01,2026-09-19,19.0,0,,PT1H12M,d4c535b440bf44b297baee847c03074b
+USGS-02037500,flow (cfs),continuous,Primary,1990-10-01,2026-09-19,36.0,0,,PT1H12M,b1b65faca46c48a78fb23fcdc286cac8
+USGS-02037500,flow (cfs),daily mean,Primary,1934-10-01,2026-09-16,92.0,3,,,3995ee5508334084af0a1325f951eadf
+USGS-02037500,stage (ft),continuous,Primary,2007-10-01,2026-09-19,19.0,0,,PT1H12M,0935a143b6884f12a7f70d6830109606
+USGS-03524000,flow (cfs),continuous,Primary,1990-10-01,2026-09-19,36.0,0,,PT1H12M,7ebfdc4f61de4920a99eddf552874f95
+USGS-03524000,flow (cfs),daily mean,Primary,1920-10-01,2026-09-19,106.0,0,,,598f6e348bb047be944566c89b02bd0f
+USGS-03524000,stage (ft),continuous,Primary,2007-10-01,2026-09-19,19.0,0,,PT1H12M,68bf6d4441fd45bebe680b0d0cef8847
+USGS-03527000,flow (cfs),continuous,Primary,2002-11-06,2026-09-19,23.9,0,,PT1H12M,4475194502234a17b8f9224596df1704
+USGS-03527000,flow (cfs),daily mean,Primary,1920-10-01,2026-09-17,106.0,2,,,cab899d08f5d4fc8a926784b1ff4c79e
+USGS-03527000,stage (ft),continuous,Primary,2007-10-01,2026-09-19,19.0,0,,PT1H12M,5e564dcdcec34feea833691e5513d8f3
