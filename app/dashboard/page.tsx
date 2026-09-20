@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
 import NavBar from "@/components/NavBar";
-import GaugeDashboard from "@/components/GaugeDashboard";
 
 type GaugeSummary = {
   site_id: string; name: string;
@@ -52,7 +51,6 @@ export default function Dashboard() {
         </div>
 
         <div className="mx-auto mt-8 max-w-5xl overflow-hidden rounded-[40px]">
-          <GaugeDashboard embedded />
         </div>
       </div>
     </div>
