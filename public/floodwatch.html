@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Florida Flood Watch</title>
+<link href="https://fonts.googleapis.com/css2?family=Potta+One&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:    #17496c;
+  --navy-dk: #0d2a42;
+  --navy-lt: #1d5a82;
+  --amber:   #ffa600;
+  --white:   #ffffff;
+  --off:     #d6eaf5;
+  --muted:   #a8cfe0;
+  --dim:     #5a9dbf;
+  --green:   #4caf82;
+  --orange:  #ff9800;
+  --rose:    #e05555;
+  --teal:    #2dd4bf;
+  --indigo:  #818cf8;
+  --potta:   'Potta One', cursive;
+  --sans:    'DM Sans', sans-serif;
+  --mono:    'DM Mono', monospace;
+}
+html,body{min-height:100%;background:var(--navy-dk);color:var(--white);font-family:var(--sans)}
+.nav{position:sticky;top:0;z-index:100;background:var(--navy-dk);border-bottom:3px solid var(--amber);display:flex;align-items:center;gap:0;padding:0 32px;height:58px;}
+.nav-logo{display:flex;align-items:center;gap:10px;margin-right:32px;text-decoration:none}
+.nav-logo-icon{width:32px;height:32px;border-radius:8px;background:var(--amber);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
+.nav-logo-name{font-family:var(--potta);font-size:16px;color:var(--white)}
+.nav-logo-name span{color:var(--amber)}
+.nav-links{display:flex;gap:2px;flex:1}
+.nav-btn{padding:10px 20px;font-family:var(--potta);font-size:13px;color:var(--muted);background:none;border:none;cursor:pointer;border-radius:8px;transition:background .15s,color .15s;border-bottom:3px solid transparent;margin-bottom:-3px;}
+.nav-btn:hover{color:var(--white);background:rgba(255,255,255,.06)}
+.nav-btn.on{color:var(--amber);border-bottom-color:var(--amber)}
+.nav-live{margin-left:auto;display:flex;align-items:center;gap:7px;font-family:var(--mono);font-size:11px;color:var(--muted)}
+.live-dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.page{display:none}.page.on{display:block}
+.home-hero{background:var(--navy);min-height:calc(100vh - 58px);display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:60px 32px 140px;text-align:center;}
+.home-hero-stars{position:absolute;inset:0;pointer-events:none}
+.star{position:absolute;border-radius:50%;background:#fff}
+.hero-badge{display:inline-block;font-family:var(--mono);font-size:12px;color:var(--amber);border:2px solid rgba(255,166,0,.4);border-radius:4px;padding:5px 14px;margin-bottom:24px;letter-spacing:.05em;}
+.hero-title-box{background:var(--white);border-radius:14px;padding:24px 52px;margin-bottom:28px;display:inline-block;box-shadow:0 8px 40px rgba(0,0,0,.3);}
+.hero-title-box h1{font-family:var(--potta);font-size:48px;color:var(--navy);letter-spacing:.02em;line-height:1;}
+.hero-sub{font-family:var(--sans);font-size:16px;color:rgba(255,255,255,.75);margin-bottom:36px;max-width:480px;line-height:1.6}
+.hero-cta{display:inline-flex;align-items:center;gap:10px;background:var(--amber);color:var(--navy);font-family:var(--potta);font-size:15px;padding:14px 36px;border-radius:10px;border:none;cursor:pointer;box-shadow:0 4px 24px rgba(255,166,0,.4);transition:transform .15s,box-shadow .15s;}
+.hero-cta:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(255,166,0,.5)}
+.hero-stats{position:absolute;bottom:0;left:0;right:0;background:rgba(13,42,66,.9);border-top:2px solid rgba(255,166,0,.25);display:flex;justify-content:center;}
+.hs{flex:1;max-width:200px;text-align:center;padding:18px 12px;border-right:1px solid rgba(255,166,0,.15)}
+.hs:last-child{border-right:none}
+.hs-n{font-family:var(--potta);font-size:30px;color:var(--amber)}
+.hs-l{font-size:12px;color:var(--muted);font-family:var(--mono);margin-top:4px}
+.home-ticker{background:rgba(224,85,85,.08);border-top:2px solid rgba(224,85,85,.2);border-bottom:2px solid rgba(224,85,85,.2);padding:12px 32px;display:flex;align-items:center;gap:12px;font-family:var(--mono);font-size:13px;}
+.ticker-dot{width:8px;height:8px;border-radius:50%;background:var(--rose);flex-shrink:0;animation:pulse 2s infinite}
+.home-why{padding:60px 48px;background:var(--navy)}
+.home-why h2{font-family:var(--potta);font-size:28px;color:var(--white);margin-bottom:32px;text-align:center}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.why-card{background:var(--navy-dk);border:2px solid rgba(255,166,0,.25);border-radius:12px;padding:24px;}
+.why-card-icon{font-size:28px;margin-bottom:12px}
+.why-card h3{font-family:var(--potta);font-size:16px;color:var(--amber);margin-bottom:8px}
+.why-card p{font-size:14px;color:var(--muted);line-height:1.7}
+.home-gauges{padding:40px 48px 60px;background:var(--navy-dk)}
+.home-gauges h2{font-family:var(--potta);font-size:24px;color:var(--white);margin-bottom:20px}
+.gauge-strip{display:flex;gap:12px;flex-wrap:wrap}
+.gauge-chip{background:var(--navy);border:2px solid rgba(255,166,0,.25);border-radius:10px;padding:14px 18px;cursor:pointer;transition:border-color .15s,background .15s;display:flex;flex-direction:column;gap:6px;min-width:150px;}
+.gauge-chip:hover{border-color:var(--amber);background:rgba(255,166,0,.06)}
+.gc-name{font-family:var(--potta);font-size:14px;color:var(--white)}
+.gc-stage{font-family:var(--mono);font-size:18px;font-weight:500;color:var(--white)}
+.gc-bar{height:3px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden;margin-top:2px}
+.gc-fill{height:100%;border-radius:2px}
+.gc-pill{font-family:var(--mono);font-size:11px;padding:2px 8px;border-radius:4px;font-weight:500;align-self:flex-start}
+.disclaimer{background:var(--navy-dk);padding:20px 48px;border-top:1px solid rgba(255,166,0,.15);font-size:12px;color:var(--dim);font-family:var(--mono);line-height:1.7;text-align:center;}
+.disclaimer a{color:var(--teal);text-decoration:none}
+.dash{background:var(--navy-dk);min-height:calc(100vh - 58px);padding:28px 32px}
+.dash-title{font-family:var(--potta);font-size:26px;color:var(--white);margin-bottom:24px;text-align:center;letter-spacing:.03em}
+.stat-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:14px;margin-bottom:20px}
+.stat-box{background:var(--navy);border:3px solid var(--amber);border-radius:12px;padding:20px 22px;position:relative;overflow:hidden;}
+.stat-box::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--amber)}
+.sb-label{font-family:var(--mono);font-size:11px;color:var(--muted);margin-bottom:8px}
+.sb-value{font-family:var(--potta);font-size:34px;color:var(--white);line-height:1}
+.sb-sub{font-size:12px;font-family:var(--mono);margin-top:6px}
+.sb-bar{height:3px;background:rgba(255,255,255,.1);border-radius:2px;margin-top:14px;overflow:hidden}
+.sb-fill{height:100%;border-radius:2px;background:var(--amber)}
+.dash-bottom{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.dash-panel{background:var(--navy);border:3px solid var(--amber);border-radius:12px;padding:20px 22px}
+.dp-title{font-family:var(--potta);font-size:16px;color:var(--amber);margin-bottom:14px;letter-spacing:.03em}
+.g-row{display:flex;justify-content:space-between;align-items:center;padding:11px 14px;background:rgba(255,255,255,.05);border-radius:8px;margin-bottom:8px;border-left:4px solid var(--dim);}
+.g-name{font-family:var(--potta);font-size:13px;color:var(--white)}
+.g-pill{font-family:var(--mono);font-size:11px;padding:3px 9px;border-radius:5px;font-weight:500}
+.mappage{display:grid;grid-template-columns:280px 1fr;min-height:calc(100vh - 58px);background:var(--navy-dk)}
+.map-sidebar{background:var(--navy);border-right:3px solid var(--amber);display:flex;flex-direction:column;}
+.ms-head{padding:16px;border-bottom:2px solid rgba(255,166,0,.25)}
+.ms-head-title{font-family:var(--potta);font-size:15px;color:var(--amber);margin-bottom:10px}
+.ms-search{background:rgba(255,255,255,.06);border:2px solid rgba(255,166,0,.3);border-radius:8px;padding:9px 12px;display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:13px;color:var(--muted);}
+.ms-list{padding:10px;flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:5px}
+.ms-card{background:rgba(255,255,255,.04);border:2px solid rgba(255,166,0,.2);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color .15s,background .15s;}
+.ms-card:hover{border-color:rgba(255,166,0,.5);background:rgba(255,166,0,.05)}
+.ms-card.sel{border-color:var(--amber);background:rgba(255,166,0,.1)}
+.ms-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:7px}
+.ms-name{font-family:var(--potta);font-size:13px;color:var(--white)}
+.ms-bar{height:3px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden}
+.ms-fill{height:100%;border-radius:2px}
+.map-area{position:relative;background:var(--navy);display:flex;flex-direction:column}
+.map-canvas-wrap{flex:1;position:relative;overflow:hidden;min-height:500px}
+.map-legend{position:absolute;bottom:14px;left:14px;background:rgba(13,42,66,.92);border:2px solid rgba(255,166,0,.3);border-radius:10px;padding:12px 16px;font-family:var(--mono);z-index:20;}
+.ml-title{font-size:11px;color:var(--muted);margin-bottom:8px}
+.ml-row{display:flex;align-items:center;gap:8px;margin-bottom:5px;font-size:12px;color:var(--off)}
+.ml-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.map-right-panel{position:absolute;right:16px;top:16px;bottom:16px;width:280px;display:flex;flex-direction:column;gap:12px;z-index:20;}
+.rg-box{background:var(--white);border:3px solid var(--amber);border-radius:12px;overflow:hidden;flex-shrink:0;}
+.rg-header{background:var(--white);padding:11px 14px;border-bottom:2px solid var(--amber);display:flex;justify-content:space-between;align-items:center;}
+.rg-header h3{font-family:var(--potta);font-size:13px;color:var(--navy)}
+.rg-x{width:22px;height:22px;border-radius:50%;border:2px solid var(--amber);color:var(--navy);font-size:13px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-family:var(--mono)}
+.rg-stats{padding:12px 14px;display:flex;flex-direction:column;gap:7px}
+.rg-row{display:flex;justify-content:space-between;font-size:13px}
+.rg-row span:first-child{color:#4a6a7a;font-family:var(--mono)}
+.rg-row span:last-child{font-family:var(--mono);font-weight:500;color:var(--navy)}
+.chart1-box{background:var(--navy-dk);border:3px solid var(--amber);border-radius:12px;overflow:hidden;flex:1;display:flex;flex-direction:column;}
+.chart1-header{padding:10px 14px;border-bottom:2px solid rgba(255,166,0,.25);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
+.chart1-header h4{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.chart1-tag{background:var(--amber);color:var(--navy);font-family:var(--potta);font-size:11px;padding:4px 12px;border-radius:6px}
+.chart1-meta{padding:8px 14px;border-bottom:1px solid rgba(255,166,0,.15);flex-shrink:0}
+.chart1-meta-row{font-size:11px;font-family:var(--mono);color:var(--muted);margin-bottom:3px}
+.chart1-canvas{flex:1;padding:10px 12px;min-height:120px;display:flex;align-items:center;justify-content:center}
+.chart1-thresh{display:flex;gap:10px;padding:8px 14px;border-top:1px solid rgba(255,166,0,.15);flex-wrap:wrap;flex-shrink:0}
+.thr{display:flex;align-items:center;gap:5px;font-size:10px;color:var(--muted);font-family:var(--mono)}
+.tdot{width:7px;height:7px;border-radius:50%}
+::-webkit-scrollbar{width:5px;height:5px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:rgba(255,166,0,.3);border-radius:3px}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav-logo" onclick="goPage('home')" style="cursor:pointer">
+    <div class="nav-logo-icon">🌊</div>
+    <div class="nav-logo-name">Florida <span>Flood Watch</span></div>
+  </a>
+  <div class="nav-links">
+    <button class="nav-btn on" id="nb-home"     onclick="goPage('home')">Home</button>
+    <button class="nav-btn"   id="nb-dashboard" onclick="goPage('dashboard')">Dashboard</button>
+    <button class="nav-btn"   id="nb-map"       onclick="goPage('map')">Interactive Map</button>
+  </div>
+  <div class="nav-live"><div class="live-dot"></div>Live</div>
+</nav>
+
+<!-- HOME -->
+<div class="page on" id="page-home">
+  <div class="home-ticker" style="opacity:.4">
+    <div class="ticker-dot"></div>
+    <span style="color:var(--dim)">No active watches — alerts will appear here when data is connected.</span>
+  </div>
+  <div class="home-hero">
+    <div class="home-hero-stars" id="starsEl"></div>
+    <div class="hero-badge">Student research project · 7 Florida river gauges</div>
+    <div class="hero-title-box"><h1>FLOOD WATCH!</h1></div>
+    <div class="hero-sub">Tagline goes here</div>
+    <button class="hero-cta" onclick="goPage('dashboard')">Open Dashboard ↓</button>
+    <div class="hero-stats">
+      <div class="hs"><div class="hs-n" style="color:var(--dim)">—</div><div class="hs-l">gauges monitored</div></div>
+      <div class="hs"><div class="hs-n" style="color:var(--dim)">—</div><div class="hs-l">forecast horizon</div></div>
+      <div class="hs"><div class="hs-n" style="color:var(--dim)">—</div><div class="hs-l">model NSE score</div></div>
+      <div class="hs"><div class="hs-n" style="color:var(--dim)">—</div><div class="hs-l">active watches</div></div>
+    </div>
+  </div>
+  <div class="home-why">
+    <h2>Section Title</h2>
+    <div class="why-grid">
+      <div class="why-card"><div class="why-card-icon">📊</div><h3>Feature 1</h3><p>Description goes here</p></div>
+      <div class="why-card"><div class="why-card-icon">⚖️</div><h3>Feature 2</h3><p>Description goes here</p></div>
+      <div class="why-card"><div class="why-card-icon">🌧️</div><h3>Feature 3</h3><p>Description goes here</p></div>
+    </div>
+  </div>
+  <div class="home-gauges">
+    <h2>Live gauge conditions</h2>
+    <div class="gauge-strip">
+      <div class="gauge-chip" onclick="goPage('map')"><div class="gc-name">Gauge 1</div><div class="gc-stage" style="color:var(--dim)">— ft</div><div class="gc-bar"><div class="gc-fill" style="width:0%"></div></div><span class="gc-pill" style="color:var(--dim);background:rgba(255,255,255,.05)">No data</span></div>
+      <div class="gauge-chip" onclick="goPage('map')"><div class="gc-name">Gauge 2</div><div class="gc-stage" style="color:var(--dim)">— ft</div><div class="gc-bar"><div class="gc-fill" style="width:0%"></div></div><span class="gc-pill" style="color:var(--dim);background:rgba(255,255,255,.05)">No data</span></div>
+      <div class="gauge-chip" onclick="goPage('map')"><div class="gc-name">Gauge 3</div><div class="gc-stage" style="color:var(--dim)">— ft</div><div class="gc-bar"><div class="gc-fill" style="width:0%"></div></div><span class="gc-pill" style="color:var(--dim);background:rgba(255,255,255,.05)">No data</span></div>
+      <div class="gauge-chip" onclick="goPage('map')"><div class="gc-name">Gauge 4</div><div class="gc-stage" style="color:var(--dim)">— ft</div><div class="gc-bar"><div class="gc-fill" style="width:0%"></div></div><span class="gc-pill" style="color:var(--dim);background:rgba(255,255,255,.05)">No data</span></div>
+      <div class="gauge-chip" onclick="goPage('map')"><div class="gc-name">Gauge 5</div><div class="gc-stage" style="color:var(--dim)">— ft</div><div class="gc-bar"><div class="gc-fill" style="width:0%"></div></div><span class="gc-pill" style="color:var(--dim);background:rgba(255,255,255,.05)">No data</span></div>
+      <div class="gauge-chip" onclick="goPage('map')"><div class="gc-name">Gauge 6</div><div class="gc-stage" style="color:var(--dim)">— ft</div><div class="gc-bar"><div class="gc-fill" style="width:0%"></div></div><span class="gc-pill" style="color:var(--dim);background:rgba(255,255,255,.05)">No data</span></div>
+      <div class="gauge-chip" onclick="goPage('map')"><div class="gc-name">Gauge 7</div><div class="gc-stage" style="color:var(--dim)">— ft</div><div class="gc-bar"><div class="gc-fill" style="width:0%"></div></div><span class="gc-pill" style="color:var(--dim);background:rgba(255,255,255,.05)">No data</span></div>
+    </div>
+  </div>
+  <div class="disclaimer">
+    This is a student research project and not an official flood warning system.<br>
+    For life-safety decisions follow <a href="https://water.weather.gov" target="_blank">water.weather.gov</a>.
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div class="page" id="page-dashboard">
+  <div class="dash">
+    <div class="dash-title">DASHBOARD</div>
+    <div class="stat-grid">
+      <div class="stat-box"><div class="sb-label">Stat 1</div><div class="sb-value" style="color:var(--dim)">—</div><div class="sb-sub" style="color:var(--dim)">waiting for data</div><div class="sb-bar"><div class="sb-fill" style="width:0%"></div></div></div>
+      <div class="stat-box"><div class="sb-label">Stat 2</div><div class="sb-value" style="color:var(--dim)">—</div><div class="sb-sub" style="color:var(--dim)">waiting for data</div><div class="sb-bar"><div class="sb-fill" style="width:0%"></div></div></div>
+      <div class="stat-box"><div class="sb-label">Stat 3</div><div class="sb-value" style="color:var(--dim)">—</div><div class="sb-sub" style="color:var(--dim)">waiting for data</div><div class="sb-bar"><div class="sb-fill" style="width:0%"></div></div></div>
+      <div class="stat-box"><div class="sb-label">Stat 4</div><div class="sb-value" style="color:var(--dim)">—</div><div class="sb-sub" style="color:var(--dim)">waiting for data</div><div class="sb-bar"><div class="sb-fill" style="width:0%"></div></div></div>
+    </div>
+    <div class="dash-bottom">
+      <div class="dash-panel">
+        <div class="dp-title">GAUGE STATUS</div>
+        <div class="g-row"><div><div class="g-name">Gauge 1</div></div><span class="g-pill" style="color:var(--dim);background:rgba(255,255,255,.05)">— ft</span></div>
+        <div class="g-row"><div><div class="g-name">Gauge 2</div></div><span class="g-pill" style="color:var(--dim);background:rgba(255,255,255,.05)">— ft</span></div>
+        <div class="g-row"><div><div class="g-name">Gauge 3</div></div><span class="g-pill" style="color:var(--dim);background:rgba(255,255,255,.05)">— ft</span></div>
+        <div class="g-row"><div><div class="g-name">Gauge 4</div></div><span class="g-pill" style="color:var(--dim);background:rgba(255,255,255,.05)">— ft</span></div>
+        <div class="g-row"><div><div class="g-name">Gauge 5</div></div><span class="g-pill" style="color:var(--dim);background:rgba(255,255,255,.05)">— ft</span></div>
+        <div class="g-row"><div><div class="g-name">Gauge 6</div></div><span class="g-pill" style="color:var(--dim);background:rgba(255,255,255,.05)">— ft</span></div>
+        <div class="g-row"><div><div class="g-name">Gauge 7</div></div><span class="g-pill" style="color:var(--dim);background:rgba(255,255,255,.05)">— ft</span></div>
+      </div>
+      <div class="dash-panel">
+        <div class="dp-title">ACTIVE ALERTS</div>
+        <div style="padding:32px;text-align:center;color:var(--dim);font-family:var(--mono);font-size:13px;line-height:1.7">
+          No alerts yet.<br>Alerts will appear here once the data pipeline is connected.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- INTERACTIVE MAP -->
+<div class="page" id="page-map">
+  <div class="mappage">
+    <div class="map-sidebar">
+      <div class="ms-head">
+        <div class="ms-head-title">River Gauges</div>
+        <div class="ms-search">⌕ Search…</div>
+      </div>
+      <div class="ms-list">
+        <div class="ms-card" onclick="selectGauge(this,'Gauge 1')"><div class="ms-top"><div><div class="ms-name">Gauge 1</div></div><span class="g-pill" style="color:var(--dim);background:rgba(255,255,255,.05);font-size:11px">— ft</span></div><div class="ms-bar"><div class="ms-fill" style="width:0%"></div></div></div>
+        <div class="ms-card" onclick="selectGauge(this,'Gauge 2')"><div class="ms-top"><div><div class="ms-name">Gauge 2</div></div><span class="g-pill" style="color:var(--dim);background:rgba(255,255,255,.05);font-size:11px">— ft</span></div><div class="ms-bar"><div class="ms-fill" style="width:0%"></div></div></div>
+        <div class="ms-card" onclick="selectGauge(this,'Gauge 3')"><div class="ms-top"><div><div class="ms-name">Gauge 3</div></div><span class="g-pill" style="color:var(--dim);background:rgba(255,255,255,.05);font-size:11px">— ft</span></div><div class="ms-bar"><div class="ms-fill" style="width:0%"></div></div></div>
+        <div class="ms-card" onclick="selectGauge(this,'Gauge 4')"><div class="ms-top"><div><div class="ms-name">Gauge 4</div></div><span class="g-pill" style="color:var(--dim);background:rgba(255,255,255,.05);font-size:11px">— ft</span></div><div class="ms-bar"><div class="ms-fill" style="width:0%"></div></div></div>
+        <div class="ms-card" onclick="selectGauge(this,'Gauge 5')"><div class="ms-top"><div><div class="ms-name">Gauge 5</div></div><span class="g-pill" style="color:var(--dim);background:rgba(255,255,255,.05);font-size:11px">— ft</span></div><div class="ms-bar"><div class="ms-fill" style="width:0%"></div></div></div>
+        <div class="ms-card" onclick="selectGauge(this,'Gauge 6')"><div class="ms-top"><div><div class="ms-name">Gauge 6</div></div><span class="g-pill" style="color:var(--dim);background:rgba(255,255,255,.05);font-size:11px">— ft</span></div><div class="ms-bar"><div class="ms-fill" style="width:0%"></div></div></div>
+        <div class="ms-card" onclick="selectGauge(this,'Gauge 7')"><div class="ms-top"><div><div class="ms-name">Gauge 7</div></div><span class="g-pill" style="color:var(--dim);background:rgba(255,255,255,.05);font-size:11px">— ft</span></div><div class="ms-bar"><div class="ms-fill" style="width:0%"></div></div></div>
+      </div>
+    </div>
+    <div class="map-area">
+      <div class="map-canvas-wrap">
+        <!-- Jeet adds Leaflet map tiles here -->
+        <div class="map-legend">
+          <div class="ml-title">Flood status</div>
+          <div class="ml-row"><div class="ml-dot" style="background:var(--green)"></div>Normal</div>
+          <div class="ml-row"><div class="ml-dot" style="background:var(--amber)"></div>Action stage</div>
+          <div class="ml-row"><div class="ml-dot" style="background:var(--orange)"></div>Minor watch</div>
+          <div class="ml-row"><div class="ml-dot" style="background:var(--rose)"></div>Moderate</div>
+        </div>
+        <div class="map-right-panel">
+          <div class="rg-box">
+            <div class="rg-header">
+              <h3 id="rgTitle" style="color:#888">RIVER GAUGE</h3>
+              <div class="rg-x">×</div>
+            </div>
+            <div class="rg-stats">
+              <div class="rg-row"><span>USGS ID</span><span id="rgId" style="color:#aaa">—</span></div>
+              <div class="rg-row"><span>Stage now</span><span id="rgStage" style="color:#aaa">— ft</span></div>
+              <div class="rg-row"><span>24 h forecast</span><span id="rgFc" style="color:#aaa">— ft</span></div>
+              <div class="rg-row"><span>Minor flood at</span><span style="color:#aaa">— ft</span></div>
+              <div class="rg-row"><span>Status</span><span id="rgStatus" style="color:#aaa">—</span></div>
+            </div>
+          </div>
+          <div class="chart1-box">
+            <div class="chart1-header">
+              <h4>72-hour stage forecast</h4>
+              <div class="chart1-tag">CHART 1</div>
+            </div>
+            <div class="chart1-meta">
+              <div class="chart1-meta-row" id="chartRisk" style="color:var(--dim)">Select a gauge</div>
+              <div class="chart1-meta-row" style="color:var(--dim)">Forecast will appear here</div>
+            </div>
+            <div class="chart1-canvas">
+              <span style="font-family:var(--mono);font-size:12px;color:var(--dim)">Chart will appear here</span>
+            </div>
+            <div class="chart1-thresh">
+              <div class="thr"><div class="tdot" style="background:var(--amber)"></div>Action</div>
+              <div class="thr"><div class="tdot" style="background:var(--orange)"></div>Minor</div>
+              <div class="thr"><div class="tdot" style="background:var(--rose)"></div>Moderate</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const c=document.getElementById('starsEl');
+  if(!c)return;
+  for(let i=0;i<80;i++){
+    const s=document.createElement('div');s.className='star';
+    const sz=Math.random()*3+.8;
+    s.style.cssText=`width:${sz}px;height:${sz}px;top:${Math.random()*100}%;left:${Math.random()*100}%;opacity:${Math.random()*.65+.15};position:absolute;border-radius:50%;background:#fff`;
+    c.appendChild(s);
+  }
+})();
+function goPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('on'));
+  document.getElementById('page-'+id).classList.add('on');
+  document.getElementById('nb-'+id).classList.add('on');
+}
+function selectGauge(card,name){
+  document.querySelectorAll('.ms-card').forEach(c=>c.classList.remove('sel'));
+  card.classList.add('sel');
+  document.getElementById('rgTitle').textContent='RIVER GAUGE — '+name.toUpperCase();
+  document.getElementById('rgTitle').style.color='#17496c';
+}
+</script>
+</body>
+</html>
