@@ -47,11 +47,10 @@ html,body{min-height:100%;background:var(--navy-dk);color:var(--white);font-fami
 .hero-title-box{background:var(--white);border-radius:14px;padding:24px 52px;margin-bottom:28px;display:inline-block;box-shadow:0 8px 40px rgba(0,0,0,.3);}
 .hero-title-box h1{font-family:var(--potta);font-size:48px;color:var(--navy);letter-spacing:.02em;line-height:1;}
 .hero-sub{font-family:var(--sans);font-size:16px;color:rgba(255,255,255,.75);margin-bottom:36px;max-width:480px;line-height:1.6}
-.hero-cta{display:inline-flex;align-items:center;gap:10px;background:var(--amber);color:var(--navy);font-family:var(--potta);font-size:15px;padding:14px 36px;border-radius:10px;border:none;cursor:pointer;box-shadow:0 4px 24px rgba(255,166,0,.4);transition:transform .15s,box-shadow .15s;}
-.hero-cta:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(255,166,0,.5)}
+.hero-cta{display:inline-flex;align-items:center;gap:10px;background:var(--amber);color:var(--navy);font-family:var(--potta);font-size:15px;padding:14px 36px;border-radius:10px;border:none;cursor:pointer;}
 .hero-stats{position:absolute;bottom:0;left:0;right:0;background:rgba(13,42,66,.9);border-top:2px solid rgba(255,166,0,.25);display:flex;justify-content:center;}
 .hs{flex:1;max-width:200px;text-align:center;padding:18px 12px;border-right:1px solid rgba(255,166,0,.15)}
-.hs:last-child{border-right:none}
+.hs:last-child{border-right:none}.hero-cta:hover{background:var(--amber)}
 .hs-n{font-family:var(--potta);font-size:30px;color:var(--amber)}
 .hs-l{font-size:12px;color:var(--muted);font-family:var(--mono);margin-top:4px}
 .home-ticker{background:rgba(224,85,85,.08);border-top:2px solid rgba(224,85,85,.2);border-bottom:2px solid rgba(224,85,85,.2);padding:12px 32px;display:flex;align-items:center;gap:12px;font-family:var(--mono);font-size:13px;}
@@ -138,8 +137,7 @@ html,body{min-height:100%;background:var(--navy-dk);color:var(--white);font-fami
 
 <nav class="nav">
   <a class="nav-logo" onclick="goPage('home')" style="cursor:pointer">
-    <div class="nav-logo-icon">🌊</div>
-    <div class="nav-logo-name">Florida <span>Flood Watch</span></div>
+    <div class="nav-logo-name"> <span>Flood Watch</span></div>
   </a>
   <div class="nav-links">
     <button class="nav-btn on" id="nb-home"     onclick="goPage('home')">Home</button>
@@ -190,7 +188,7 @@ html,body{min-height:100%;background:var(--navy-dk);color:var(--white);font-fami
   </div>
   <div class="disclaimer">
     This is a student project and not an official flood warning system.<br>
-    For life-safety decisions follow <a href="https://water.weather.gov" target="_blank">water.weather.gov</a>.
+    For life-safety decisions follow <a href="https://water.noaa.gov/gauges/09406000#hg=official" target="_blank">water.weather.gov</a>.
   </div>
 </div>
 
@@ -212,8 +210,7 @@ html,body{min-height:100%;background:var(--navy-dk);color:var(--white);font-fami
         <div class="g-row"><div><div class="g-name">Gauge 3</div></div><span class="g-pill" style="color:var(--dim);background:rgba(255,255,255,.05)">— ft</span></div>
         <div class="g-row"><div><div class="g-name">Gauge 4</div></div><span class="g-pill" style="color:var(--dim);background:rgba(255,255,255,.05)">— ft</span></div>
         <div class="g-row"><div><div class="g-name">Gauge 5</div></div><span class="g-pill" style="color:var(--dim);background:rgba(255,255,255,.05)">— ft</span></div>
-        <div class="g-row"><div><div class="g-name">Gauge 6</div></div><span class="g-pill" style="color:var(--dim);background:rgba(255,255,255,.05)">— ft</span></div>
-        <div class="g-row"><div><div class="g-name">Gauge 7</div></div><span class="g-pill" style="color:var(--dim);background:rgba(255,255,255,.05)">— ft</span></div>
+      
       </div>
       <div class="dash-panel">
         <div class="dp-title">ACTIVE ALERTS</div>
@@ -239,8 +236,7 @@ html,body{min-height:100%;background:var(--navy-dk);color:var(--white);font-fami
         <div class="ms-card" onclick="selectGauge(this,'Gauge 3')"><div class="ms-top"><div><div class="ms-name">Gauge 3</div></div><span class="g-pill" style="color:var(--dim);background:rgba(255,255,255,.05);font-size:11px">— ft</span></div><div class="ms-bar"><div class="ms-fill" style="width:0%"></div></div></div>
         <div class="ms-card" onclick="selectGauge(this,'Gauge 4')"><div class="ms-top"><div><div class="ms-name">Gauge 4</div></div><span class="g-pill" style="color:var(--dim);background:rgba(255,255,255,.05);font-size:11px">— ft</span></div><div class="ms-bar"><div class="ms-fill" style="width:0%"></div></div></div>
         <div class="ms-card" onclick="selectGauge(this,'Gauge 5')"><div class="ms-top"><div><div class="ms-name">Gauge 5</div></div><span class="g-pill" style="color:var(--dim);background:rgba(255,255,255,.05);font-size:11px">— ft</span></div><div class="ms-bar"><div class="ms-fill" style="width:0%"></div></div></div>
-        <div class="ms-card" onclick="selectGauge(this,'Gauge 6')"><div class="ms-top"><div><div class="ms-name">Gauge 6</div></div><span class="g-pill" style="color:var(--dim);background:rgba(255,255,255,.05);font-size:11px">— ft</span></div><div class="ms-bar"><div class="ms-fill" style="width:0%"></div></div></div>
-        <div class="ms-card" onclick="selectGauge(this,'Gauge 7')"><div class="ms-top"><div><div class="ms-name">Gauge 7</div></div><span class="g-pill" style="color:var(--dim);background:rgba(255,255,255,.05);font-size:11px">— ft</span></div><div class="ms-bar"><div class="ms-fill" style="width:0%"></div></div></div>
+       
       </div>
     </div>
     <div class="map-area">
@@ -269,7 +265,7 @@ html,body{min-height:100%;background:var(--navy-dk);color:var(--white);font-fami
           </div>
           <div class="chart1-box">
             <div class="chart1-header">
-              <h4>72-hour stage forecast</h4>
+              <h4>#-hour stage forecast</h4>
               <div class="chart1-tag">CHART 1</div>
             </div>
             <div class="chart1-meta">
