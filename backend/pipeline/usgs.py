@@ -15,7 +15,7 @@ import time
 import pandas as pd
 import requests
 
-BASE_URL = "https://api.waterdata.usgs.gov/ogcapi/v0/collections/daily/items"
+BASE_URL = "https://api.waterdata.usgs.gov/ogcapi/v1/collections/daily/items"
 
 DISCHARGE = "00060"    # streamflow, cubic feet per second
 GAGE_HEIGHT = "00065"  # river level, feet
@@ -83,7 +83,7 @@ def fetch_daily(
                 value = float(props.get("value"))
             except (TypeError, ValueError):
                 continue  # skip missing / non-numeric readings
-            approval = props.get("approvals_status") or []
+            approval = props.get("approval_status") or []
             rows.append(
                 {
                     "time": props.get("time"),
