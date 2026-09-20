@@ -31,7 +31,7 @@ export default function Dashboard() {
   const stats = [
     { label: "GAUGES MONITORED", value: data ? String(data.gauges.length) : "—" },
     { label: "HIGHEST RISK NOW", value: highestRisk?.risk.category.toUpperCase() ?? "—", sub: highestRisk?.name },
-    { label: "OUR ML BEATS BASIC FORECAST BY", value: avgSkill24h !== null ? `+${avgSkill24h}%` : "—" },
+    { label: "ML PREDICTION ACCURACY OVER FORECAST:", value: avgSkill24h !== null ? `+${avgSkill24h}%` : "—" },
     { label: "DATA SOURCE", value: data ? (data.is_sample_data ? "SAMPLE" : "LIVE") : "—" },
   ];
 
