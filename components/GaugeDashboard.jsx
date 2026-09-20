@@ -3,6 +3,8 @@ import {
   ComposedChart, Line, Area, ReferenceLine, XAxis, YAxis,
   CartesianGrid, Tooltip, Legend, ResponsiveContainer,
 } from "recharts";
+import ForecastChart from "./ForecastChart";
+import ForecastTable from "./ForecastTable";
 
 // colors
 const C = {
@@ -293,7 +295,7 @@ function ChainStrip({ gauges, selectedId, onSelect }) {
 }
 
 //  App 
-export default function GaugeDashboard() {
+export default function GaugeDashboard({ embedded = false }) {
   const [data, setData] = useState(null);
   const [scores, setScores] = useState(null);
   const [selectedId, setSelectedId] = useState(null);
@@ -313,13 +315,13 @@ export default function GaugeDashboard() {
   }, []);
 
   if (error) return (
-    <div style={{ background: C.bg, minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", color: C.minor, fontFamily: "system-ui" }}>
+    <div style={{ background: C.bg, minHeight: embedded ? 240 : "100vh", display: "flex", alignItems: "center", justifyContent: "center", color: C.minor, fontFamily: "system-ui" }}>
       Failed to load data: {error}
     </div>
   );
 
   if (!data) return (
-    <div style={{ background: C.bg, minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", color: C.muted, fontFamily: "system-ui" }}>
+    <div style={{ background: C.bg, minHeight: embedded ? 240 : "100vh", display: "flex", alignItems: "center", justifyContent: "center", color: C.muted, fontFamily: "system-ui" }}>
       Loading gauge data…
     </div>
   );
@@ -327,12 +329,12 @@ export default function GaugeDashboard() {
   const gauge = data.gauges.find(g => g.site_id === selectedId) || data.gauges[0];
 
   return (
-    <div style={{ background: C.bg, minHeight: "100vh", color: C.text, fontFamily: "'Inter', system-ui, sans-serif", padding: "24px 20px" }}>
+    <div style={{ background: C.bg, minHeight: embedded ? 240 : "100vh", color: C.text, fontFamily: "'Inter', system-ui, sans-serif", padding: "24px 20px" }}>
       <div style={{ maxWidth: 900, margin: "0 auto" }}>
 
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 20, flexWrap: "wrap", gap: 8 }}>
           <div>
-            <h1 style={{ margin: 0, fontSize: 22, fontWeight: 700, color: C.text, letterSpacing: -0.5 }}>FloodWatch</h1>
+            {!embedded && <h1 style={{ margin: 0, fontSize: 22, fontWeight: 700, color: C.text, letterSpacing: -0.5 }}>FloodWatch</h1>}
             <div style={{ color: C.muted, fontSize: 12, marginTop: 2 }}>Generated {fmt(data.generated_at)} · {data.model_version}</div>
           </div>
           <select value={selectedId} onChange={e => setSelectedId(e.target.value)}
@@ -347,7 +349,9 @@ export default function GaugeDashboard() {
         <div style={{ height: 16 }} />
         <StatusCard gauge={gauge} />
         <div style={{ height: 12 }} />
-        <MainChart gauge={gauge} />
+        <ForecastChart gauge={gauge} />
+        <div style={{ height: 12 }} />
+        <ForecastTable gauge={gauge} />
         <div style={{ height: 12 }} />
         <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr", gap: 12 }}>
           <RiskBox gauge={gauge} />
