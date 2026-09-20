@@ -160,7 +160,7 @@ export default function InteractiveMap() {
                   <div className="font-potta text-xs text-[#17496c]/60 mb-1">FLOOD RISK</div>
                   <div className="font-potta text-sm text-[#17496c]">{g.risk.label}</div>
                   <div className="font-mono-flood text-xs text-[#17496c]/70 mt-1">Peak: {g.risk.peak_median_ft.toFixed(2)} ft</div>
-                  <div className="font-mono-flood text-xs text-[#17496c]/70">Chance of minor: {(g.risk.prob_minor * 100).toFixed(0)}%</div>
+                  <div className="font-mono-flood text-xs text-[#17496c]/70">Flood chance (48h): {(g.risk.prob_minor * 100).toFixed(0)}%</div>
                 </div>
                 <div className="rounded-[24px] bg-white p-4">
                   <div className="font-potta text-xs text-[#17496c]/60 mb-1">RAINFALL (mm)</div>
