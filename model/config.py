@@ -1,6 +1,6 @@
 """Shared settings for the pull, train, and live-forecast scripts."""
 
-HORIZONS = (6, 12, 24, 48)   # hours ahead
+HORIZONS = (6, 12, 18, 24, 30, 36, 42, 48)  # hours ahead
 QUANTILES = (0.1, 0.5, 0.9)  # low, middle, and high estimates
 
 # The team gauge directly upstream of each gauge (None = start of our chain).
