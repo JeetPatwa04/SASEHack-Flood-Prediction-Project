@@ -1,0 +1,471 @@
+{
+  "generated_at": "2026-09-20T03:38:53Z",
+  "test_days": 730,
+  "gauges": {
+    "USGS-03524000": {
+      "high_water_ft": 4.93,
+      "horizons": {
+        "6": {
+          "n": 17495,
+          "n_high": 784,
+          "mae_ours": 0.062,
+          "mae_persistence": 0.109,
+          "coverage_80": 0.732,
+          "skill_pct": 43.374,
+          "mae_ours_high": 0.447,
+          "mae_persistence_high": 0.885,
+          "coverage_80_high": 0.648
+        },
+        "12": {
+          "n": 17483,
+          "n_high": 784,
+          "mae_ours": 0.121,
+          "mae_persistence": 0.2,
+          "coverage_80": 0.716,
+          "skill_pct": 39.484,
+          "mae_ours_high": 1.027,
+          "mae_persistence_high": 1.734,
+          "coverage_80_high": 0.588
+        },
+        "18": {
+          "n": 17475,
+          "n_high": 784,
+          "mae_ours": 0.178,
+          "mae_persistence": 0.281,
+          "coverage_80": 0.7,
+          "skill_pct": 36.769,
+          "mae_ours_high": 1.628,
+          "mae_persistence_high": 2.508,
+          "coverage_80_high": 0.517
+        },
+        "24": {
+          "n": 17469,
+          "n_high": 784,
+          "mae_ours": 0.238,
+          "mae_persistence": 0.353,
+          "coverage_80": 0.685,
+          "skill_pct": 32.612,
+          "mae_ours_high": 2.227,
+          "mae_persistence_high": 3.13,
+          "coverage_80_high": 0.399
+        },
+        "30": {
+          "n": 17463,
+          "n_high": 784,
+          "mae_ours": 0.287,
+          "mae_persistence": 0.415,
+          "coverage_80": 0.676,
+          "skill_pct": 30.887,
+          "mae_ours_high": 2.743,
+          "mae_persistence_high": 3.591,
+          "coverage_80_high": 0.314
+        },
+        "36": {
+          "n": 17457,
+          "n_high": 784,
+          "mae_ours": 0.342,
+          "mae_persistence": 0.467,
+          "coverage_80": 0.654,
+          "skill_pct": 26.746,
+          "mae_ours_high": 3.181,
+          "mae_persistence_high": 3.909,
+          "coverage_80_high": 0.267
+        },
+        "42": {
+          "n": 17451,
+          "n_high": 784,
+          "mae_ours": 0.396,
+          "mae_persistence": 0.512,
+          "coverage_80": 0.647,
+          "skill_pct": 22.652,
+          "mae_ours_high": 3.49,
+          "mae_persistence_high": 4.112,
+          "coverage_80_high": 0.227
+        },
+        "48": {
+          "n": 17445,
+          "n_high": 784,
+          "mae_ours": 0.425,
+          "mae_persistence": 0.55,
+          "coverage_80": 0.645,
+          "skill_pct": 22.662,
+          "mae_ours_high": 3.713,
+          "mae_persistence_high": 4.213,
+          "coverage_80_high": 0.241
+        }
+      }
+    },
+    "USGS-03527000": {
+      "high_water_ft": 7.06,
+      "horizons": {
+        "6": {
+          "n": 17493,
+          "n_high": 777,
+          "mae_ours": 0.059,
+          "mae_persistence": 0.137,
+          "coverage_80": 0.739,
+          "skill_pct": 56.643,
+          "mae_ours_high": 0.507,
+          "mae_persistence_high": 1.283,
+          "coverage_80_high": 0.647
+        },
+        "12": {
+          "n": 17481,
+          "n_high": 777,
+          "mae_ours": 0.129,
+          "mae_persistence": 0.261,
+          "coverage_80": 0.716,
+          "skill_pct": 50.704,
+          "mae_ours_high": 1.282,
+          "mae_persistence_high": 2.565,
+          "coverage_80_high": 0.597
+        },
+        "18": {
+          "n": 17475,
+          "n_high": 777,
+          "mae_ours": 0.192,
+          "mae_persistence": 0.373,
+          "coverage_80": 0.704,
+          "skill_pct": 48.596,
+          "mae_ours_high": 2.088,
+          "mae_persistence_high": 3.709,
+          "coverage_80_high": 0.51
+        },
+        "24": {
+          "n": 17469,
+          "n_high": 777,
+          "mae_ours": 0.264,
+          "mae_persistence": 0.473,
+          "coverage_80": 0.689,
+          "skill_pct": 44.252,
+          "mae_ours_high": 2.952,
+          "mae_persistence_high": 4.671,
+          "coverage_80_high": 0.457
+        },
+        "30": {
+          "n": 17463,
+          "n_high": 777,
+          "mae_ours": 0.343,
+          "mae_persistence": 0.563,
+          "coverage_80": 0.682,
+          "skill_pct": 38.963,
+          "mae_ours_high": 3.802,
+          "mae_persistence_high": 5.462,
+          "coverage_80_high": 0.322
+        },
+        "36": {
+          "n": 17457,
+          "n_high": 777,
+          "mae_ours": 0.427,
+          "mae_persistence": 0.642,
+          "coverage_80": 0.656,
+          "skill_pct": 33.491,
+          "mae_ours_high": 4.608,
+          "mae_persistence_high": 6.076,
+          "coverage_80_high": 0.251
+        },
+        "42": {
+          "n": 17451,
+          "n_high": 777,
+          "mae_ours": 0.5,
+          "mae_persistence": 0.709,
+          "coverage_80": 0.661,
+          "skill_pct": 29.528,
+          "mae_ours_high": 5.242,
+          "mae_persistence_high": 6.535,
+          "coverage_80_high": 0.234
+        },
+        "48": {
+          "n": 17445,
+          "n_high": 777,
+          "mae_ours": 0.586,
+          "mae_persistence": 0.765,
+          "coverage_80": 0.656,
+          "skill_pct": 23.441,
+          "mae_ours_high": 5.665,
+          "mae_persistence_high": 6.825,
+          "coverage_80_high": 0.207
+        }
+      }
+    },
+    "USGS-02026000": {
+      "high_water_ft": 6.64,
+      "horizons": {
+        "6": {
+          "n": 17308,
+          "n_high": 662,
+          "mae_ours": 0.101,
+          "mae_persistence": 0.133,
+          "coverage_80": 0.657,
+          "skill_pct": 24.186,
+          "mae_ours_high": 0.383,
+          "mae_persistence_high": 0.633,
+          "coverage_80_high": 0.63
+        },
+        "12": {
+          "n": 17284,
+          "n_high": 662,
+          "mae_ours": 0.153,
+          "mae_persistence": 0.202,
+          "coverage_80": 0.633,
+          "skill_pct": 24.37,
+          "mae_ours_high": 0.847,
+          "mae_persistence_high": 1.199,
+          "coverage_80_high": 0.533
+        },
+        "18": {
+          "n": 17266,
+          "n_high": 662,
+          "mae_ours": 0.185,
+          "mae_persistence": 0.239,
+          "coverage_80": 0.652,
+          "skill_pct": 22.713,
+          "mae_ours_high": 1.264,
+          "mae_persistence_high": 1.689,
+          "coverage_80_high": 0.458
+        },
+        "24": {
+          "n": 17248,
+          "n_high": 662,
+          "mae_ours": 0.211,
+          "mae_persistence": 0.256,
+          "coverage_80": 0.656,
+          "skill_pct": 17.587,
+          "mae_ours_high": 1.58,
+          "mae_persistence_high": 2.079,
+          "coverage_80_high": 0.421
+        },
+        "30": {
+          "n": 17230,
+          "n_high": 662,
+          "mae_ours": 0.243,
+          "mae_persistence": 0.309,
+          "coverage_80": 0.636,
+          "skill_pct": 21.492,
+          "mae_ours_high": 1.904,
+          "mae_persistence_high": 2.413,
+          "coverage_80_high": 0.456
+        },
+        "36": {
+          "n": 17212,
+          "n_high": 662,
+          "mae_ours": 0.275,
+          "mae_persistence": 0.347,
+          "coverage_80": 0.634,
+          "skill_pct": 20.662,
+          "mae_ours_high": 2.23,
+          "mae_persistence_high": 2.674,
+          "coverage_80_high": 0.414
+        },
+        "42": {
+          "n": 17194,
+          "n_high": 662,
+          "mae_ours": 0.316,
+          "mae_persistence": 0.373,
+          "coverage_80": 0.64,
+          "skill_pct": 15.254,
+          "mae_ours_high": 2.482,
+          "mae_persistence_high": 2.915,
+          "coverage_80_high": 0.373
+        },
+        "48": {
+          "n": 17176,
+          "n_high": 662,
+          "mae_ours": 0.344,
+          "mae_persistence": 0.388,
+          "coverage_80": 0.618,
+          "skill_pct": 11.455,
+          "mae_ours_high": 2.693,
+          "mae_persistence_high": 3.158,
+          "coverage_80_high": 0.376
+        }
+      }
+    },
+    "USGS-02035000": {
+      "high_water_ft": 8.96,
+      "horizons": {
+        "6": {
+          "n": 17331,
+          "n_high": 589,
+          "mae_ours": 0.076,
+          "mae_persistence": 0.15,
+          "coverage_80": 0.695,
+          "skill_pct": 48.898,
+          "mae_ours_high": 0.387,
+          "mae_persistence_high": 1.13,
+          "coverage_80_high": 0.642
+        },
+        "12": {
+          "n": 17301,
+          "n_high": 589,
+          "mae_ours": 0.169,
+          "mae_persistence": 0.269,
+          "coverage_80": 0.641,
+          "skill_pct": 37.204,
+          "mae_ours_high": 0.968,
+          "mae_persistence_high": 2.206,
+          "coverage_80_high": 0.589
+        },
+        "18": {
+          "n": 17280,
+          "n_high": 589,
+          "mae_ours": 0.226,
+          "mae_persistence": 0.357,
+          "coverage_80": 0.641,
+          "skill_pct": 36.789,
+          "mae_ours_high": 1.521,
+          "mae_persistence_high": 3.154,
+          "coverage_80_high": 0.559
+        },
+        "24": {
+          "n": 17262,
+          "n_high": 589,
+          "mae_ours": 0.274,
+          "mae_persistence": 0.428,
+          "coverage_80": 0.647,
+          "skill_pct": 36.095,
+          "mae_ours_high": 2.255,
+          "mae_persistence_high": 3.96,
+          "coverage_80_high": 0.472
+        },
+        "30": {
+          "n": 17244,
+          "n_high": 589,
+          "mae_ours": 0.334,
+          "mae_persistence": 0.501,
+          "coverage_80": 0.657,
+          "skill_pct": 33.244,
+          "mae_ours_high": 3.124,
+          "mae_persistence_high": 4.645,
+          "coverage_80_high": 0.385
+        },
+        "36": {
+          "n": 17226,
+          "n_high": 589,
+          "mae_ours": 0.416,
+          "mae_persistence": 0.568,
+          "coverage_80": 0.631,
+          "skill_pct": 26.757,
+          "mae_ours_high": 3.885,
+          "mae_persistence_high": 5.247,
+          "coverage_80_high": 0.362
+        },
+        "42": {
+          "n": 17208,
+          "n_high": 589,
+          "mae_ours": 0.496,
+          "mae_persistence": 0.629,
+          "coverage_80": 0.619,
+          "skill_pct": 21.19,
+          "mae_ours_high": 4.538,
+          "mae_persistence_high": 5.821,
+          "coverage_80_high": 0.329
+        },
+        "48": {
+          "n": 17190,
+          "n_high": 589,
+          "mae_ours": 0.59,
+          "mae_persistence": 0.684,
+          "coverage_80": 0.629,
+          "skill_pct": 13.758,
+          "mae_ours_high": 5.153,
+          "mae_persistence_high": 6.265,
+          "coverage_80_high": 0.317
+        }
+      }
+    },
+    "USGS-02037500": {
+      "high_water_ft": 8.82,
+      "horizons": {
+        "6": {
+          "n": 17515,
+          "n_high": 596,
+          "mae_ours": 0.025,
+          "mae_persistence": 0.071,
+          "coverage_80": 0.762,
+          "skill_pct": 64.424,
+          "mae_ours_high": 0.128,
+          "mae_persistence_high": 0.625,
+          "coverage_80_high": 0.688
+        },
+        "12": {
+          "n": 17509,
+          "n_high": 596,
+          "mae_ours": 0.049,
+          "mae_persistence": 0.134,
+          "coverage_80": 0.727,
+          "skill_pct": 63.263,
+          "mae_ours_high": 0.278,
+          "mae_persistence_high": 1.234,
+          "coverage_80_high": 0.638
+        },
+        "18": {
+          "n": 17503,
+          "n_high": 596,
+          "mae_ours": 0.086,
+          "mae_persistence": 0.189,
+          "coverage_80": 0.696,
+          "skill_pct": 54.351,
+          "mae_ours_high": 0.66,
+          "mae_persistence_high": 1.77,
+          "coverage_80_high": 0.579
+        },
+        "24": {
+          "n": 17497,
+          "n_high": 596,
+          "mae_ours": 0.13,
+          "mae_persistence": 0.236,
+          "coverage_80": 0.695,
+          "skill_pct": 44.825,
+          "mae_ours_high": 1.177,
+          "mae_persistence_high": 2.233,
+          "coverage_80_high": 0.51
+        },
+        "30": {
+          "n": 17491,
+          "n_high": 596,
+          "mae_ours": 0.18,
+          "mae_persistence": 0.28,
+          "coverage_80": 0.692,
+          "skill_pct": 35.643,
+          "mae_ours_high": 1.733,
+          "mae_persistence_high": 2.633,
+          "coverage_80_high": 0.453
+        },
+        "36": {
+          "n": 17485,
+          "n_high": 596,
+          "mae_ours": 0.229,
+          "mae_persistence": 0.322,
+          "coverage_80": 0.685,
+          "skill_pct": 29.076,
+          "mae_ours_high": 2.182,
+          "mae_persistence_high": 2.999,
+          "coverage_80_high": 0.305
+        },
+        "42": {
+          "n": 17479,
+          "n_high": 596,
+          "mae_ours": 0.267,
+          "mae_persistence": 0.361,
+          "coverage_80": 0.682,
+          "skill_pct": 26.099,
+          "mae_ours_high": 2.578,
+          "mae_persistence_high": 3.344,
+          "coverage_80_high": 0.294
+        },
+        "48": {
+          "n": 17473,
+          "n_high": 596,
+          "mae_ours": 0.349,
+          "mae_persistence": 0.397,
+          "coverage_80": 0.671,
+          "skill_pct": 12.164,
+          "mae_ours_high": 2.966,
+          "mae_persistence_high": 3.62,
+          "coverage_80_high": 0.257
+        }
+      }
+    }
+  }
+}
