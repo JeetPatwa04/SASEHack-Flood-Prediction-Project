@@ -6,7 +6,7 @@ import {
 import ForecastChart from "./ForecastChart";
 import ForecastTable from "./ForecastTable";
 
-// colors
+// colors — dark theme
 const C = {
   bg:        "#0d1117",
   surface:   "#161b22",
@@ -24,6 +24,10 @@ const C = {
   major:     "#ff7b72",
   rain:      "#79c0ff",
 };
+
+// fonts — wired to the same CSS vars ensuring consistency with the rest of the site
+const FONT_HEAD = "var(--font-potta), cursive";
+const FONT_BODY = "var(--font-mono-flood), monospace";
 
 const CATEGORY_COLOR = { none: C.none, action: C.action, minor: C.minor, moderate: C.moderate, major: C.major };
 
@@ -66,15 +70,15 @@ function StatusCard({ gauge }) {
   const ago = minutesAgo(current.time);
   const color = CATEGORY_COLOR[current.category] || C.none;
   return (
-    <div style={{ background: C.surface, border: `1px solid ${C.border}`, borderRadius: 8, padding: "20px 24px", display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 12 }}>
+    <div style={{ background: C.surface, border: `1px solid ${C.border}`, borderRadius: 24, padding: "20px 24px", display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 12 }}>
       <div>
-        <div style={{ color: C.muted, fontSize: 12, marginBottom: 4 }}>{gauge.chain.toUpperCase()} · {gauge.site_id}</div>
-        <div style={{ color: C.text, fontSize: 20, fontWeight: 600, marginBottom: 2 }}>{name}</div>
-        <div style={{ color: C.muted, fontSize: 13 }}>Updated {ago} min ago</div>
+        <div style={{ color: C.muted, fontSize: 12, marginBottom: 4, fontFamily: FONT_BODY }}>{gauge.chain.toUpperCase()} · {gauge.site_id}</div>
+        <div style={{ color: C.text, fontSize: 20, fontWeight: 600, marginBottom: 2, fontFamily: FONT_HEAD }}>{name}</div>
+        <div style={{ color: C.muted, fontSize: 13, fontFamily: FONT_BODY }}>Updated {ago} min ago</div>
       </div>
       <div style={{ textAlign: "right" }}>
-        <div style={{ color, fontSize: 36, fontWeight: 700, lineHeight: 1 }}>{current.stage_ft.toFixed(2)} ft</div>
-        <div style={{ color, fontSize: 13, marginTop: 4, textTransform: "capitalize" }}>
+        <div style={{ color, fontSize: 36, fontWeight: 700, lineHeight: 1, fontFamily: FONT_HEAD }}>{current.stage_ft.toFixed(2)} ft</div>
+        <div style={{ color, fontSize: 13, marginTop: 4, textTransform: "capitalize", fontFamily: FONT_BODY }}>
           {current.category === "none" ? "No flood stage" : `${current.category} flooding`}
         </div>
       </div>
@@ -87,26 +91,26 @@ function RiskBox({ gauge }) {
   const { risk } = gauge;
   const color = CATEGORY_COLOR[risk.category] || C.none;
   return (
-    <div style={{ background: C.surface, border: `1px solid ${C.border}`, borderRadius: 8, padding: "16px 20px", display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 16 }}>
+    <div style={{ background: C.surface, border: `1px solid ${C.border}`, borderRadius: 24, padding: "16px 20px", display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 16 }}>
       <div>
-        <div style={{ color: C.muted, fontSize: 11, marginBottom: 4 }}>RISK</div>
-        <div style={{ color, fontSize: 15, fontWeight: 600 }}>{risk.label}</div>
+        <div style={{ color: C.muted, fontSize: 11, marginBottom: 4, fontFamily: FONT_BODY }}>RISK</div>
+        <div style={{ color, fontSize: 15, fontWeight: 600, fontFamily: FONT_BODY }}>{risk.label}</div>
       </div>
       <div>
-        <div style={{ color: C.muted, fontSize: 11, marginBottom: 4 }}>EXPECTED PEAK</div>
-        <div style={{ color: C.text, fontSize: 15, fontWeight: 600 }}>{risk.peak_median_ft.toFixed(2)} ft
+        <div style={{ color: C.muted, fontSize: 11, marginBottom: 4, fontFamily: FONT_BODY }}>EXPECTED PEAK</div>
+        <div style={{ color: C.text, fontSize: 15, fontWeight: 600, fontFamily: FONT_BODY }}>{risk.peak_median_ft.toFixed(2)} ft
           <span style={{ color: C.muted, fontWeight: 400, fontSize: 12 }}> (up to {risk.peak_high_ft.toFixed(2)})</span>
         </div>
       </div>
       <div>
-        <div style={{ color: C.muted, fontSize: 11, marginBottom: 4 }}>CHANCE OF MINOR FLOOD</div>
-        <div style={{ color: C.text, fontSize: 15, fontWeight: 600 }}>{(risk.prob_minor * 100).toFixed(0)}%</div>
+        <div style={{ color: C.muted, fontSize: 11, marginBottom: 4, fontFamily: FONT_BODY }}>CHANCE OF MINOR FLOOD</div>
+        <div style={{ color: C.text, fontSize: 15, fontWeight: 600, fontFamily: FONT_BODY }}>{(risk.prob_minor * 100).toFixed(0)}%</div>
       </div>
     </div>
   );
 }
 
-// rain 
+// rain
 function RainStrip({ gauge }) {
   const { rain_mm } = gauge;
   const bars = [
@@ -116,14 +120,14 @@ function RainStrip({ gauge }) {
   ];
   const max = Math.max(...bars.map(b => b.value), 1);
   return (
-    <div style={{ background: C.surface, border: `1px solid ${C.border}`, borderRadius: 8, padding: "16px 20px" }}>
-      <div style={{ color: C.muted, fontSize: 12, marginBottom: 12 }}>RAINFALL (mm)</div>
+    <div style={{ background: C.surface, border: `1px solid ${C.border}`, borderRadius: 24, padding: "16px 20px" }}>
+      <div style={{ color: C.muted, fontSize: 12, marginBottom: 12, fontFamily: FONT_BODY }}>RAINFALL (mm)</div>
       <div style={{ display: "flex", gap: 16, alignItems: "flex-end", height: 60 }}>
         {bars.map(b => (
           <div key={b.label} style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: 4 }}>
-            <div style={{ color: C.text, fontSize: 12, fontWeight: 600 }}>{b.value.toFixed(1)}</div>
+            <div style={{ color: C.text, fontSize: 12, fontWeight: 600, fontFamily: FONT_BODY }}>{b.value.toFixed(1)}</div>
             <div style={{ width: "100%", background: C.rain, borderRadius: 3, height: Math.max(4, (b.value / max) * 40) }} />
-            <div style={{ color: C.muted, fontSize: 11 }}>{b.label}</div>
+            <div style={{ color: C.muted, fontSize: 11, fontFamily: FONT_BODY }}>{b.label}</div>
           </div>
         ))}
       </div>
@@ -137,10 +141,10 @@ function Scoreboard({ siteId, scoresData }) {
   if (!gaugeScores) return null;
   const horizons = ["6", "12", "24", "48"];
   return (
-    <div style={{ background: C.surface, border: `1px solid ${C.border}`, borderRadius: 8, padding: "16px 20px" }}>
-      <div style={{ color: C.muted, fontSize: 12, marginBottom: 12 }}>MODEL vs PERSISTENCE (MAE in ft)</div>
+    <div style={{ background: C.surface, border: `1px solid ${C.border}`, borderRadius: 24, padding: "16px 20px" }}>
+      <div style={{ color: C.muted, fontSize: 12, marginBottom: 12, fontFamily: FONT_BODY }}>MODEL vs PERSISTENCE (MAE in ft)</div>
       <div style={{ overflowX: "auto" }}>
-        <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13 }}>
+        <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13, fontFamily: FONT_BODY }}>
           <thead>
             <tr>
               {["Lead", "Our MAE", "Persist MAE", "Skill %", "High-water MAE"].map(h => (
@@ -170,7 +174,7 @@ function Scoreboard({ siteId, scoresData }) {
   );
 }
 
-//chart main one 
+//chart main one
 function MainChart({ gauge }) {
   const data = buildChartData(gauge);
   const thresholds = gauge.thresholds_ft;
@@ -179,7 +183,7 @@ function MainChart({ gauge }) {
   const CustomTooltip = ({ active, payload, label }) => {
     if (!active || !payload?.length) return null;
     return (
-      <div style={{ background: C.surface, border: `1px solid ${C.border}`, borderRadius: 6, padding: "10px 14px", fontSize: 12 }}>
+      <div style={{ background: C.surface, border: `1px solid ${C.border}`, borderRadius: 12, padding: "10px 14px", fontSize: 12, fontFamily: FONT_BODY }}>
         <div style={{ color: C.muted, marginBottom: 6 }}>{fmt(label)}</div>
         {payload.map(p => p.value != null && (
           <div key={p.name} style={{ color: p.color || C.text, marginBottom: 2 }}>
@@ -191,9 +195,9 @@ function MainChart({ gauge }) {
   };
 
   return (
-    <div style={{ background: C.surface, border: `1px solid ${C.border}`, borderRadius: 8, padding: "16px 20px" }}>
-      <div style={{ color: C.text, fontSize: 15, fontWeight: 600, marginBottom: 4 }}>River Level Forecast</div>
-      <div style={{ color: C.muted, fontSize: 12, marginBottom: 12 }}>Past 72h observed + 48h ML forecast vs NWS</div>
+    <div style={{ background: C.surface, border: `1px solid ${C.border}`, borderRadius: 24, padding: "16px 20px" }}>
+      <div style={{ color: C.text, fontSize: 15, fontWeight: 600, marginBottom: 4, fontFamily: FONT_HEAD }}>River Level Forecast</div>
+      <div style={{ color: C.muted, fontSize: 12, marginBottom: 12, fontFamily: FONT_BODY }}>Past 72h observed + 48h ML forecast vs NWS</div>
 
       {/* Legend / Key */}
       <div style={{ display: "flex", flexWrap: "wrap", gap: 14, marginBottom: 14 }}>
@@ -216,7 +220,7 @@ function MainChart({ gauge }) {
                 borderTop: `2px ${item.style === "dotted" ? "dotted" : item.style === "dashed" ? "dashed" : "solid"} ${item.color}`
               }} />
             )}
-            <span style={{ color: C.muted, fontSize: 11 }}>{item.label}</span>
+            <span style={{ color: C.muted, fontSize: 11, fontFamily: FONT_BODY }}>{item.label}</span>
           </div>
         ))}
       </div>
@@ -255,7 +259,7 @@ function MainChart({ gauge }) {
   );
 }
 
-//  River Chain Strip 
+//  River Chain Strip
 function ChainStrip({ gauges, selectedId, onSelect }) {
   const grouped = {};
   for (const g of gauges) {
@@ -263,11 +267,11 @@ function ChainStrip({ gauges, selectedId, onSelect }) {
     grouped[g.chain].push(g);
   }
   return (
-    <div style={{ background: C.surface, border: `1px solid ${C.border}`, borderRadius: 8, padding: "16px 20px" }}>
-      <div style={{ color: C.muted, fontSize: 12, marginBottom: 12 }}>RIVER CHAIN</div>
+    <div style={{ background: C.surface, border: `1px solid ${C.border}`, borderRadius: 24, padding: "16px 20px" }}>
+      <div style={{ color: C.muted, fontSize: 12, marginBottom: 12, fontFamily: FONT_BODY }}>RIVER CHAIN</div>
       {Object.entries(grouped).map(([chain, gs]) => (
         <div key={chain} style={{ marginBottom: 12 }}>
-          <div style={{ color: C.muted, fontSize: 11, marginBottom: 6 }}>{chain}</div>
+          <div style={{ color: C.muted, fontSize: 11, marginBottom: 6, fontFamily: FONT_BODY }}>{chain}</div>
           <div style={{ display: "flex", gap: 8, flexWrap: "wrap", alignItems: "center" }}>
             {gs.map((g, i) => {
               const color = CATEGORY_COLOR[g.current.category] || C.none;
@@ -278,8 +282,8 @@ function ChainStrip({ gauges, selectedId, onSelect }) {
                   <button onClick={() => onSelect(g.site_id)} style={{
                     background: isSelected ? color + "22" : "transparent",
                     border: `1px solid ${color}`,
-                    borderRadius: 6, padding: "6px 12px", cursor: "pointer",
-                    color, fontSize: 12, fontWeight: isSelected ? 600 : 400,
+                    borderRadius: 12, padding: "6px 12px", cursor: "pointer",
+                    color, fontSize: 12, fontWeight: isSelected ? 600 : 400, fontFamily: FONT_BODY,
                   }}>
                     {g.name.split(" At ")[1] || g.name.split(" Near ")[1] || g.name}
                     <span style={{ color: C.muted, marginLeft: 4 }}>{g.current.stage_ft.toFixed(1)} ft</span>
@@ -294,7 +298,7 @@ function ChainStrip({ gauges, selectedId, onSelect }) {
   );
 }
 
-//  App 
+//  App
 export default function GaugeDashboard({ embedded = false }) {
   const [data, setData] = useState(null);
   const [scores, setScores] = useState(null);
@@ -315,13 +319,13 @@ export default function GaugeDashboard({ embedded = false }) {
   }, []);
 
   if (error) return (
-    <div style={{ background: C.bg, minHeight: embedded ? 240 : "100vh", display: "flex", alignItems: "center", justifyContent: "center", color: C.minor, fontFamily: "system-ui" }}>
+    <div style={{ background: C.bg, minHeight: embedded ? 240 : "100vh", display: "flex", alignItems: "center", justifyContent: "center", color: C.minor, fontFamily: FONT_BODY }}>
       Failed to load data: {error}
     </div>
   );
 
   if (!data) return (
-    <div style={{ background: C.bg, minHeight: embedded ? 240 : "100vh", display: "flex", alignItems: "center", justifyContent: "center", color: C.muted, fontFamily: "system-ui" }}>
+    <div style={{ background: C.bg, minHeight: embedded ? 240 : "100vh", display: "flex", alignItems: "center", justifyContent: "center", color: C.muted, fontFamily: FONT_BODY }}>
       Loading gauge data…
     </div>
   );
@@ -329,16 +333,16 @@ export default function GaugeDashboard({ embedded = false }) {
   const gauge = data.gauges.find(g => g.site_id === selectedId) || data.gauges[0];
 
   return (
-    <div style={{ background: C.bg, minHeight: embedded ? 240 : "100vh", color: C.text, fontFamily: "'Inter', system-ui, sans-serif", padding: "24px 20px" }}>
+    <div style={{ background: C.bg, minHeight: embedded ? 240 : "100vh", color: C.text, fontFamily: "var(--font-sans), system-ui, sans-serif", padding: "24px 20px" }}>
       <div style={{ maxWidth: 900, margin: "0 auto" }}>
 
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 20, flexWrap: "wrap", gap: 8 }}>
           <div>
-            {!embedded && <h1 style={{ margin: 0, fontSize: 22, fontWeight: 700, color: C.text, letterSpacing: -0.5 }}>FloodWatch</h1>}
-            <div style={{ color: C.muted, fontSize: 12, marginTop: 2 }}>Generated {fmt(data.generated_at)} · {data.model_version}</div>
+            {!embedded && <h1 style={{ margin: 0, fontSize: 22, fontWeight: 700, color: C.text, letterSpacing: -0.5, fontFamily: FONT_HEAD }}>FloodWatch</h1>}
+            <div style={{ color: C.muted, fontSize: 12, marginTop: 2, fontFamily: FONT_BODY }}>Generated {fmt(data.generated_at)} · {data.model_version}</div>
           </div>
           <select value={selectedId} onChange={e => setSelectedId(e.target.value)}
-            style={{ background: C.surface, border: `1px solid ${C.border}`, color: C.text, borderRadius: 6, padding: "6px 10px", fontSize: 13, cursor: "pointer" }}>
+            style={{ background: C.surface, border: `1px solid ${C.border}`, color: C.text, borderRadius: 12, padding: "6px 10px", fontSize: 13, cursor: "pointer", fontFamily: FONT_BODY }}>
             {data.gauges.map(g => (
               <option key={g.site_id} value={g.site_id}>{g.name}</option>
             ))}
@@ -360,7 +364,7 @@ export default function GaugeDashboard({ embedded = false }) {
         <div style={{ height: 12 }} />
         <Scoreboard siteId={gauge.site_id} scoresData={scores} />
         <div style={{ height: 24 }} />
-        <div style={{ color: C.muted, fontSize: 11, textAlign: "center" }}>
+        <div style={{ color: C.muted, fontSize: 11, textAlign: "center", fontFamily: FONT_BODY }}>
           Data: USGS · NWS · Open-Meteo · Model: hgb-quantile-v1
         </div>
       </div>
