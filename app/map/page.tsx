@@ -142,16 +142,12 @@ export default function InteractiveMap() {
                 <ComposedChart data={chartData}>
                   <XAxis dataKey="time" tick={{ fontSize: 9 }} tickFormatter={t => new Date(t).toLocaleDateString("en-US", { month: "short", day: "numeric" })} minTickGap={30} />
                   <YAxis tick={{ fontSize: 9 }} unit=" ft" width={45} />
-<<<<<<< Updated upstream
-                  <Tooltip formatter={(v: any) => `${Number(v).toFixed(2)} ft`} contentStyle={{ background: "white", border: "1px solid #17496c", borderRadius: "8px" }} labelStyle={{ display: "none" }} itemStyle={{ color: "#17496c" }} />
-=======
                   <Tooltip
                     formatter={(v: any) => `${Number(v).toFixed(2)} ft`}
                     contentStyle={{ background: "white", border: "1px solid #17496c", borderRadius: "8px" }}
                     labelStyle={{ display: "none" }}
                     itemStyle={{ color: "#17496c" }}
                   />
->>>>>>> Stashed changes
                   {g && Object.entries(g.thresholds_ft).map(([name, val]) => (
                     <ReferenceLine key={name} y={val as number} stroke={name === "minor" ? "#f97316" : name === "moderate" ? "#ef4444" : name === "major" ? "#dc2626" : "#f59e0b"} strokeDasharray="3 3" />
                   ))}
