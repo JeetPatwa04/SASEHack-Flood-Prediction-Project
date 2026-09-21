@@ -22,9 +22,7 @@ type GaugeDetail = {
     risk: { label: string; peak_median_ft: number; prob_minor: number };
     rain_mm: { past_24h: number; next_24h: number; next_48h: number };
   };
-  scores: {
-    horizons: Record<string, { mae_ours: number; mae_persistence: number; skill_pct: number }>;
-  };
+  scores: { horizons: Record<string, { mae_ours: number; mae_persistence: number; skill_pct: number }> };
 };
 
 function minutesAgo(iso: string) {
@@ -32,7 +30,7 @@ function minutesAgo(iso: string) {
 }
 
 const CATEGORY_COLOR: Record<string, string> = {
-  none: "#22c55e", action: "#f59e0b", minor: "#f97316", moderate: "#ef4444", major: "#dc2626"
+  none: "#22c55e", action: "#f59e0b", minor: "#f97316", moderate: "#ef4444", major: "#dc2626",
 };
 
 export default function InteractiveMap() {
@@ -58,12 +56,12 @@ export default function InteractiveMap() {
   const chartData = useMemo(() => {
     if (!detail) return [];
     const map = new Map<string, any>();
-    detail.gauge.observed.forEach(o => map.set(o.time, { time: o.time, observed: o.stage_ft }));
-    detail.gauge.forecast.forEach(f => {
+    detail.gauge.observed.forEach((o) => map.set(o.time, { time: o.time, observed: o.stage_ft }));
+    detail.gauge.forecast.forEach((f) => {
       const e = map.get(f.valid_at) || { time: f.valid_at };
       map.set(f.valid_at, { ...e, forecast: f.median_ft, low: f.low_ft, high: f.high_ft });
     });
-    detail.gauge.nws_forecast.forEach(n => {
+    detail.gauge.nws_forecast.forEach((n) => {
       const e = map.get(n.valid_at) || { time: n.valid_at };
       map.set(n.valid_at, { ...e, nws: n.stage_ft });
     });
@@ -71,45 +69,39 @@ export default function InteractiveMap() {
   }, [detail]);
 
   const g = detail?.gauge;
-  const statusColor = g ? (CATEGORY_COLOR[g.current.category] || "#22c55e") : "#22c55e";
+  const statusColor = g ? CATEGORY_COLOR[g.current.category] || "#22c55e" : "#22c55e";
 
   return (
-    <div className="min-h-screen bg-[#17496c]">
+    <div className="min-h-screen bg-navy">
       <NavBar />
       <div className="px-6 py-10">
         <h1 className="mb-8 text-center font-potta text-5xl text-white md:text-7xl">INTERACTIVE MAP</h1>
-        <div className="mx-auto grid max-w-6xl grid-cols-1 gap-4 rounded-[40px] bg-[#ffa600] p-6 lg:grid-cols-[280px_1fr_1fr] lg:h-[600px]">
-
-          {/* Gauge list */}
-          <div className="overflow-y-auto rounded-[32px] bg-white p-4">
-            <div className="mb-3 font-potta text-sm text-[#17496c]">RIVER GAUGES</div>
+        <div className="mx-auto grid max-w-6xl grid-cols-1 gap-4 rounded-blob bg-amber p-6 lg:grid-cols-[280px_1fr_1fr] lg:h-[600px]">
+          <div className="overflow-y-auto rounded-blob-sm bg-white p-4">
+            <div className="mb-3 font-potta text-sm text-navy">RIVER GAUGES</div>
             <div className="flex flex-col gap-2">
-              {gauges.map((g) => (
-                <button key={g.site_id} onClick={() => setSelectedId(g.site_id)}
-                  className={`rounded-xl border-2 px-3 py-2 text-left text-sm transition-colors ${g.site_id === selectedId ? "border-[#ffa600] bg-[#ffa600]/10" : "border-transparent bg-black/5 hover:border-[#ffa600]/50"}`}>
-                  <div className="font-medium text-[#17496c]">{g.name}</div>
-                  <div className="font-mono-flood text-xs text-[#17496c]/60">{g.current.stage_ft.toFixed(2)} ft — {g.risk.category}</div>
+              {gauges.map((gauge) => (
+                <button key={gauge.site_id} onClick={() => setSelectedId(gauge.site_id)}
+                  className={`rounded-xl border-2 px-3 py-2 text-left text-sm transition-colors ${gauge.site_id === selectedId ? "border-amber bg-amber/10" : "border-transparent bg-black/5 hover:border-amber/50"}`}>
+                  <div className="font-medium text-navy">{gauge.name}</div>
+                  <div className="font-mono-flood text-xs text-navy/60">{gauge.current.stage_ft.toFixed(2)} ft — {gauge.risk.category}</div>
                 </button>
               ))}
             </div>
           </div>
 
-          {/* Map */}
-          <div className="min-h-[320px] overflow-hidden rounded-[32px]">
+          <div className="min-h-[320px] overflow-hidden rounded-blob-sm">
             <GaugeMap gauges={gauges} selectedId={selectedId} onSelect={setSelectedId} />
           </div>
 
-          {/* Right panel */}
           <div className="flex flex-col gap-3 overflow-y-auto">
-
-            {/* Status card */}
-            <div className="rounded-[24px] bg-white p-4">
-              <div className="font-potta text-lg text-[#17496c]">{g?.name ?? "Select a gauge"}</div>
+            <div className="rounded-blob-xs bg-white p-4">
+              <div className="font-potta text-lg text-navy">{g?.name ?? "Select a gauge"}</div>
               {g && (
                 <div className="mt-2 flex items-end justify-between">
                   <div>
-                    <div className="font-mono-flood text-xs text-[#17496c]/60">Updated {minutesAgo(g.current.time)} min ago</div>
-                    <div className="font-mono-flood text-sm text-[#17496c]/80 mt-1">Minor flood at {g.thresholds_ft.minor} ft</div>
+                    <div className="font-mono-flood text-xs text-navy/60">Updated {minutesAgo(g.current.time)} min ago</div>
+                    <div className="font-mono-flood text-sm text-navy/80 mt-1">Minor flood at {g.thresholds_ft.minor} ft</div>
                   </div>
                   <div className="text-right">
                     <div className="font-potta text-3xl" style={{ color: statusColor }}>{g.current.stage_ft.toFixed(2)} ft</div>
@@ -121,32 +113,21 @@ export default function InteractiveMap() {
               )}
             </div>
 
-            {/* Chart */}
-            <div className="rounded-[24px] bg-white p-4 flex-1">
-              <span className="mb-2 inline-block rounded-full bg-[#ffa600] px-3 py-1 font-potta text-xs text-white">River Level Forecast</span>
+            <div className="rounded-blob-xs bg-white p-4 flex-1">
+              <span className="mb-2 inline-block rounded-full bg-amber px-3 py-1 font-potta text-xs text-white">River Level Forecast</span>
               <div className="flex gap-3 flex-wrap mb-2">
-                {[
-                  { label: "Observed", color: "#17496c" },
-                  { label: "Our forecast", color: "#2dd4bf" },
-                  { label: "NWS forecast", color: "#f59e0b" },
-                ].map(item => (
+                {[{ label: "Observed", color: "#17496c" }, { label: "Our forecast", color: "#2dd4bf" }, { label: "NWS forecast", color: "#f59e0b" }].map((item) => (
                   <div key={item.label} className="flex items-center gap-1">
                     <div className="w-5 h-0.5" style={{ background: item.color }} />
-                    <span className="font-mono-flood text-xs text-[#17496c]/60">{item.label}</span>
+                    <span className="font-mono-flood text-xs text-navy/60">{item.label}</span>
                   </div>
                 ))}
               </div>
               <ResponsiveContainer width="100%" height={160}>
                 <ComposedChart data={chartData}>
-                  <XAxis dataKey="time" tick={{ fontSize: 9 }} tickFormatter={t => new Date(t).toLocaleDateString("en-US", { month: "short", day: "numeric" })} minTickGap={30} />
+                  <XAxis dataKey="time" tick={{ fontSize: 9 }} tickFormatter={(t) => new Date(t).toLocaleDateString("en-US", { month: "short", day: "numeric" })} minTickGap={30} />
                   <YAxis tick={{ fontSize: 9 }} unit=" ft" width={45} />
-                  <Tooltip
-                    formatter={(v: any) => `${Number(v).toFixed(2)} ft`}
-                    contentStyle={{ background: "white", border: "1px solid #17496c", borderRadius: "8px" }}
-                    labelStyle={{ display: "none" }}
-                    itemStyle={{ color: "#17496c" }}
-                   
-                  />
+                  <Tooltip formatter={(v: any) => `${Number(v).toFixed(2)} ft`} contentStyle={{ background: "white", border: "1px solid #17496c", borderRadius: "8px" }} labelStyle={{ display: "none" }} itemStyle={{ color: "#17496c" }} />
                   {g && Object.entries(g.thresholds_ft).map(([name, val]) => (
                     <ReferenceLine key={name} y={val as number} stroke={name === "minor" ? "#f97316" : name === "moderate" ? "#ef4444" : name === "major" ? "#dc2626" : "#f59e0b"} strokeDasharray="3 3" />
                   ))}
@@ -159,26 +140,24 @@ export default function InteractiveMap() {
               </ResponsiveContainer>
             </div>
 
-            {/* Risk + Rain */}
             {g && (
               <div className="grid grid-cols-2 gap-3">
-                <div className="rounded-[24px] bg-white p-4">
-                  <div className="font-potta text-xs text-[#17496c]/60 mb-1">FLOOD RISK</div>
-                  <div className="font-potta text-sm text-[#17496c]">{g.risk.label}</div>
-                  <div className="font-mono-flood text-xs text-[#17496c]/70 mt-1">Peak: {g.risk.peak_median_ft.toFixed(2)} ft</div>
-                  <div className="font-mono-flood text-xs text-[#17496c]/70">Flood chance (48h): {(g.risk.prob_minor * 100).toFixed(0)}%</div>
+                <div className="rounded-blob-xs bg-white p-4">
+                  <div className="font-potta text-xs text-navy/60 mb-1">FLOOD RISK</div>
+                  <div className="font-potta text-sm text-navy">{g.risk.label}</div>
+                  <div className="font-mono-flood text-xs text-navy/70 mt-1">Peak: {g.risk.peak_median_ft.toFixed(2)} ft</div>
+                  <div className="font-mono-flood text-xs text-navy/70">Flood chance (48h): {(g.risk.prob_minor * 100).toFixed(0)}%</div>
                 </div>
-                <div className="rounded-[24px] bg-white p-4">
-                  <div className="font-potta text-xs text-[#17496c]/60 mb-1">RAINFALL (mm)</div>
-                  <div className="font-mono-flood text-xs text-[#17496c]/80 space-y-1">
-                    <div>Past 24h: <span className="font-bold text-[#17496c]">{g.rain_mm.past_24h}</span></div>
-                    <div>Next 24h: <span className="font-bold text-[#17496c]">{g.rain_mm.next_24h}</span></div>
-                    <div>Next 48h: <span className="font-bold text-[#17496c]">{g.rain_mm.next_48h}</span></div>
+                <div className="rounded-blob-xs bg-white p-4">
+                  <div className="font-potta text-xs text-navy/60 mb-1">RAINFALL (mm)</div>
+                  <div className="font-mono-flood text-xs text-navy/80 space-y-1">
+                    <div>Past 24h: <span className="font-bold text-navy">{g.rain_mm.past_24h}</span></div>
+                    <div>Next 24h: <span className="font-bold text-navy">{g.rain_mm.next_24h}</span></div>
+                    <div>Next 48h: <span className="font-bold text-navy">{g.rain_mm.next_48h}</span></div>
                   </div>
                 </div>
               </div>
             )}
-
           </div>
         </div>
       </div>

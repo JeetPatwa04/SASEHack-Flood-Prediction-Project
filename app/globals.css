@@ -1,15 +1,28 @@
 @import "tailwindcss";
 @import "leaflet/dist/leaflet.css";
 
-body { font-family: var(--font-sans), system-ui, sans-serif; }
-.font-potta { font-family: var(--font-potta), cursive; }
-.font-mono-flood { font-family: var(--font-mono), monospace; }
+@theme {
+  /* Brand palette */
+  --color-navy: #17496c;
+  --color-navy-dark: #0d2a42;
+  --color-amber: #ffa600;
+  --color-skyblue: #48b3ff;
+
+  /* The big rounded-corner "blob" radius used on every card/panel */
+  --radius-blob-xs: 24px;
+  --radius-blob-sm: 32px;
+  --radius-blob: 40px;
+
+  /* Fonts — wired to the CSS vars next/font sets on <html> in layout.tsx */
+  --font-sans: var(--next-sans), system-ui, sans-serif;
+  --font-potta: var(--next-potta), cursive;
+  --font-mono-flood: var(--next-mono), monospace;
+}
 
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #0d2a42; }
-::-webkit-scrollbar-thumb { background: #ffa600; border-radius: 3px; }
+::-webkit-scrollbar-track { background: var(--color-navy-dark); }
+::-webkit-scrollbar-thumb { background: var(--color-amber); border-radius: 3px; }
 
-/* animations for elements popping up on page, planning on playing around with this and see what looks good */
 @keyframes pulse-dot { 0%, 100% { opacity: 1; } 50% { opacity: .3; } }
 .live-dot { animation: pulse-dot 2s infinite; }
 

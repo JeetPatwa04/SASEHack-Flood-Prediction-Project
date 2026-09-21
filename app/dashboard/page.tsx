@@ -36,22 +36,20 @@ export default function Dashboard() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#17496c]">
+    <div className="min-h-screen bg-navy">
       <NavBar />
       <div className="px-6 py-12">
         <h1 className="mb-10 text-center font-potta text-5xl text-white md:text-7xl">DASHBOARD</h1>
-        <div className="mx-auto grid max-w-5xl grid-cols-1 gap-4 rounded-[40px] bg-[#ffa600] p-8 sm:grid-cols-2">
+        <div className="mx-auto grid max-w-5xl grid-cols-1 gap-4 rounded-blob bg-amber p-8 sm:grid-cols-2">
           {stats.map((s) => (
-            <div key={s.label} className="animate-fade-up rounded-[40px] bg-white p-6">
-              <div className="font-mono-flood text-xs text-[#17496c]/60">{s.label}</div>
-              <div className="mt-2 font-potta text-4xl text-[#17496c]">{loading ? "…" : s.value}</div>
-              {s.sub && <div className="mt-1 text-sm text-[#17496c]/70">{s.sub}</div>}
+            <div key={s.label} className="animate-fade-up rounded-blob bg-white p-6">
+              <div className="font-mono-flood text-xs text-navy/60">{s.label}</div>
+              <div className="mt-2 font-potta text-4xl text-navy">{loading ? "…" : s.value}</div>
+              {s.sub && <div className="mt-1 text-sm text-navy/70">{s.sub}</div>}
             </div>
           ))}
         </div>
-
-        <div className="mx-auto mt-8 max-w-5xl overflow-hidden rounded-[40px]">
-        </div>
+        <div className="mx-auto mt-8 max-w-5xl overflow-hidden rounded-blob" />
       </div>
     </div>
   );
