@@ -7,7 +7,7 @@ const dmSans = DM_Sans({ subsets: ["latin"], weight: ["400", "500", "600"], vari
 const dmMono = DM_Mono({ subsets: ["latin"], weight: ["400", "500"], variable: "--next-mono" });
 
 export const metadata: Metadata = {
-  title: "FloodWatch – ML-Powered River Level Forecasting",
+  title: "Flood-Watch! – ML-Powered River Level Forecasting",
   description: "Real-time flood risk monitoring powered by USGS data and machine learning.",
 };
 
