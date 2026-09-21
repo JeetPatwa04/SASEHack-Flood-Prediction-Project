@@ -90,7 +90,7 @@ export default function InteractiveMap() {
                 <button key={g.site_id} onClick={() => setSelectedId(g.site_id)}
                   className={`rounded-xl border-2 px-3 py-2 text-left text-sm transition-colors ${g.site_id === selectedId ? "border-[#ffa600] bg-[#ffa600]/10" : "border-transparent bg-black/5 hover:border-[#ffa600]/50"}`}>
                   <div className="font-medium text-[#17496c]">{g.name}</div>
-                  <div className="font-mono-flood text-xs text-[#17496c]/60">{g.current.stage_ft.toFixed(2)} ft — {g.risk.category}</div>
+                  <div className="font-bold mono-flood text-xs text-[#17496c]/60">{g.current.stage_ft.toFixed(2)} ft — {g.risk.category}</div>
                 </button>
               ))}
             </div>
@@ -110,12 +110,12 @@ export default function InteractiveMap() {
               {g && (
                 <div className="mt-2 flex items-end justify-between">
                   <div>
-                    <div className="font-mono-flood text-xs text-[#17496c]/60">Updated {minutesAgo(g.current.time)} min ago</div>
-                    <div className="font-mono-flood text-sm text-[#17496c]/80 mt-1">Minor flood at {g.thresholds_ft.minor} ft</div>
+                    <div className="font-bold mono-flood text-xs text-[#17496c]/60">Updated {minutesAgo(g.current.time)} min ago</div>
+                    <div className="font-bold mono-flood text-sm text-[#17496c]/80 mt-1">Minor flood at {g.thresholds_ft.minor} ft</div>
                   </div>
                   <div className="text-right">
                     <div className="font-potta text-3xl" style={{ color: statusColor }}>{g.current.stage_ft.toFixed(2)} ft</div>
-                    <div className="font-mono-flood text-xs capitalize" style={{ color: statusColor }}>
+                    <div className="font-bold mono-flood text-xs capitalize" style={{ color: statusColor }}>
                       {g.current.category === "none" ? "No flood stage" : `${g.current.category} flooding`}
                     </div>
                   </div>
@@ -134,7 +134,7 @@ export default function InteractiveMap() {
                 ].map(item => (
                   <div key={item.label} className="flex items-center gap-1">
                     <div className="w-5 h-0.5" style={{ background: item.color }} />
-                    <span className="font-mono-flood text-xs text-[#17496c]/60">{item.label}</span>
+                    <span className="font-bold mono-flood text-xs text-[#17496c]/60">{item.label}</span>
                   </div>
                 ))}
               </div>
@@ -164,14 +164,14 @@ export default function InteractiveMap() {
             {g && (
               <div className="grid grid-cols-2 gap-3">
                 <div className="rounded-[24px] bg-white p-4">
-                  <div className="font-potta text-xs text-[#17496c]/60 mb-1">FLOOD RISK</div>
-                  <div className="font-potta text-sm text-[#17496c]">{g.risk.label}</div>
-                  <div className="font-mono-flood text-xs text-[#17496c]/70 mt-1">Peak: {g.risk.peak_median_ft.toFixed(2)} ft</div>
-                  <div className="font-mono-flood text-xs text-[#17496c]/70">Flood chance (48h): {(g.risk.prob_minor * 100).toFixed(0)}%</div>
+                  <div className="font-potta text-xs text-[#17496c]/90 mb-1">FLOOD RISK</div>
+                  <div className="font-potta text-sm text-[#17496c]/70">{g.risk.label}</div>
+                  <div className="font-bold mono-flood text-xs text-[#17496c]/80 mt-1">Peak: {g.risk.peak_median_ft.toFixed(2)} ft</div>
+                  <div className="font-bold mono-flood text-xs text-[#17496c]/80">Flood chance (48h): {(g.risk.prob_minor * 100).toFixed(0)}%</div>
                 </div>
                 <div className="rounded-[24px] bg-white p-4">
-                  <div className="font-potta text-xs text-[#17496c]/60 mb-1">RAINFALL (mm)</div>
-                  <div className="font-mono-flood text-xs text-[#17496c]/80 space-y-1">
+                  <div className="font-potta text-xs text-[#17496c]/90 mb-1">RAINFALL (mm)</div>
+                  <div className="font-bold mono-flood text-xs text-[#17496c]/80 space-y-1">
                     <div>Past 24h: <span className="font-bold text-[#17496c]">{g.rain_mm.past_24h}</span></div>
                     <div>Next 24h: <span className="font-bold text-[#17496c]">{g.rain_mm.next_24h}</span></div>
                     <div>Next 48h: <span className="font-bold text-[#17496c]">{g.rain_mm.next_48h}</span></div>
@@ -187,7 +187,7 @@ export default function InteractiveMap() {
         {scores && (
           <div className="mx-auto mt-6 max-w-6xl rounded-[40px] bg-[#ffa600] p-6">
             <div className="mb-1 font-potta text-xl text-navy">HOW ACCURATE IS OUR MODEL?</div>
-            <div className="font-mono-flood text-md text-navy mb-4">Our ML Model vs Official Forecasts </div>
+            <div className="font-bold mono-flood text-md text-navy mb-4">Our ML Model vs Official Forecasts </div>
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
               {scoreHorizons.map(h => {
                 const row = scores.horizons[h];
@@ -196,10 +196,10 @@ export default function InteractiveMap() {
                   <div key={h} className="rounded-[24px] bg-white p-4">
                     <div className="font-potta text-xs text-[#17496c]/80 mb-1">{h}H AHEAD</div>
                     <div className="font-potta text-2xl text-[#17496c]">+{row.skill_pct.toFixed(0)}%</div>
-                    <div className="font-mono-flood text-xs text-[#17496c]/80 mt-1">better than Official forecast</div>
+                    <div className="font-bold mono-flood text-xs text-[#17496c]/80 mt-1">better than Official forecast</div>
                     <div className="mt-2 space-y-1">
-                      <div className="font-mono-flood text-xs text-[#17496c]/80">Our error: <span className="font-bold text-[#17496c]">{row.mae_ours.toFixed(2)} ft</span></div>
-                      <div className="font-mono-flood text-xs text-[#17496c]/80">Official Forecast: <span className="font-bold text-[#17496c]">{row.mae_persistence.toFixed(2)} ft</span></div>
+                      <div className="font-bold mono-flood text-xs text-[#17496c]/80">Our error: <span className="font-bold text-[#17496c]">{row.mae_ours.toFixed(2)} ft</span></div>
+                      <div className="font-bold mono-flood text-xs text-[#17496c]/80">Official Forecast: <span className="font-bold text-[#17496c]">{row.mae_persistence.toFixed(2)} ft</span></div>
                     </div>
                   </div>
                 );
