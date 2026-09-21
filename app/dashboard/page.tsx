@@ -30,8 +30,8 @@ export default function Dashboard() {
     : null;
 
   const stats = [
-    { label: "GAUGES MONITORED", value: data ? String(data.gauges.length) : "—" },
-    { label: "HIGHEST RISK NOW", value: highestRisk?.risk.category.toUpperCase() ?? "—", sub: highestRisk?.name },
+    { label: "GAUGES MONITORED:", value: data ? String(data.gauges.length) : "—" },
+    { label: "HIGHEST RISK NOW:", value: highestRisk?.risk.category.toUpperCase() ?? "—", sub: highestRisk?.name },
     { label: "ML PREDICTION ACCURACY OVER FORECAST:", value: avgSkill24h !== null ? `+${avgSkill24h}%` : "—" },
     { label: "DATA SOURCE", value: data ? (data.is_sample_data ? "SAMPLE" : "LIVE") : "—" },
   ];
@@ -44,7 +44,7 @@ export default function Dashboard() {
         <div className="mx-auto grid max-w-5xl grid-cols-1 gap-4 rounded-blob bg-amber p-8 sm:grid-cols-2">
           {stats.map((s) => (
             <div key={s.label} className="animate-fade-up rounded-blob bg-white p-6">
-              <div className="font-mono-flood text-xs text-navy/60">{s.label}</div>
+              <div className="font-bold mono-flood text-md text-navy/70">{s.label}</div>
               <div className="mt-2 font-potta text-4xl text-navy">{loading ? "…" : s.value}</div>
               {s.sub && <div className="mt-1 text-sm text-navy/70">{s.sub}</div>}
             </div>
