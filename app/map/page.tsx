@@ -132,15 +132,16 @@ export default function InteractiveMap() {
                   { label: "NWS forecast", color: "#f59e0b" },
                 ].map(item => (
                   <div key={item.label} className="flex items-center gap-1">
-                    <div className="w-5 h-0.5" style={{ background: item.color }} />
+                    <div className="w-5 h-1" style={{ background: item.color }} />
                     <span className="font-bold mono-flood text-xs text-[#17496c]/80">{item.label}</span>
                   </div>
                 ))}
               </div>
-              <ResponsiveContainer width="100%" height={160}>
+
+              <ResponsiveContainer width="100%" height={200}>
                 <ComposedChart data={chartData}>
-                  <XAxis dataKey="time" tick={{ fontSize: 9 }} tickFormatter={t => new Date(t).toLocaleDateString("en-US", { month: "short", day: "numeric" })} minTickGap={30} />
-                  <YAxis tick={{ fontSize: 9 }} unit=" ft" width={45} />
+                  <XAxis dataKey="time" tick={{ fontSize: 11 }} tickFormatter={t => new Date(t).toLocaleDateString("en-US", { month: "short", day: "numeric" })} minTickGap={30} />
+                  <YAxis tick={{ fontSize: 11 }} unit=" ft" width={45} />
                   <Tooltip
                     formatter={(v: any) => `${Number(v).toFixed(2)} ft`}
                     contentStyle={{ background: "white", border: "1px solid #17496c", borderRadius: "8px" }}
