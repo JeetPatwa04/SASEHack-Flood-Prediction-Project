@@ -32,11 +32,7 @@ export default function Dashboard() {
   const stats = [
     { label: "GAUGES MONITORED", value: data ? String(data.gauges.length) : "—" },
     { label: "HIGHEST RISK NOW", value: highestRisk?.risk.category.toUpperCase() ?? "—", sub: highestRisk?.name },
-<<<<<<< HEAD
-    { label: "MODEL SKILL VS PERSISTENCE (24H)", value: avgSkill24h !== null ? `+${avgSkill24h}%` : "—" },
-=======
     { label: "ML PREDICTION ACCURACY OVER FORECAST:", value: avgSkill24h !== null ? `+${avgSkill24h}%` : "—" },
->>>>>>> 15cfbcf11aad3ad0e431d752df5e7151d208755e
     { label: "DATA SOURCE", value: data ? (data.is_sample_data ? "SAMPLE" : "LIVE") : "—" },
   ];
 
@@ -54,14 +50,7 @@ export default function Dashboard() {
             </div>
           ))}
         </div>
-<<<<<<< HEAD
-
-        <div className="mx-auto mt-8 max-w-5xl overflow-hidden rounded-[40px]">
-          <GaugeDashboard embedded />
-        </div>
-=======
         <div className="mx-auto mt-8 max-w-5xl overflow-hidden rounded-blob" />
->>>>>>> 15cfbcf11aad3ad0e431d752df5e7151d208755e
       </div>
     </div>
   );
