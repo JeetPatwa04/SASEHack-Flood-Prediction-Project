@@ -90,7 +90,7 @@ export default function InteractiveMap() {
                 <button key={g.site_id} onClick={() => setSelectedId(g.site_id)}
                   className={`rounded-xl border-2 px-3 py-2 text-left text-sm transition-colors ${g.site_id === selectedId ? "border-[#ffa600] bg-[#ffa600]/10" : "border-transparent bg-black/5 hover:border-[#ffa600]/50"}`}>
                   <div className="font-medium text-[#17496c]">{g.name}</div>
-                  <div className="font-bold mono-flood text-xs text-[#17496c]/60">{g.current.stage_ft.toFixed(2)} ft — {g.risk.category}</div>
+                  <div className="font-bold mono-flood text-xs text-[#17496c]/80">{g.current.stage_ft.toFixed(2)} ft — {g.risk.category}</div>
                 </button>
               ))}
             </div>
@@ -109,7 +109,7 @@ export default function InteractiveMap() {
               {g && (
                 <div className="mt-2 flex items-end justify-between">
                   <div>
-                    <div className="font-bold mono-flood text-xs text-[#17496c]/60">Updated {minutesAgo(g.current.time)} min ago</div>
+                    <div className="font-bold mono-flood text-xs text-[#17496c]/80">Updated {minutesAgo(g.current.time)} min ago</div>
                     <div className="font-bold mono-flood text-sm text-[#17496c]/80 mt-1">Minor flood at {g.thresholds_ft.minor} ft</div>
                   </div>
                   <div className="text-right">
@@ -133,7 +133,7 @@ export default function InteractiveMap() {
                 ].map(item => (
                   <div key={item.label} className="flex items-center gap-1">
                     <div className="w-5 h-0.5" style={{ background: item.color }} />
-                    <span className="font-bold mono-flood text-xs text-[#17496c]/60">{item.label}</span>
+                    <span className="font-bold mono-flood text-xs text-[#17496c]/80">{item.label}</span>
                   </div>
                 ))}
               </div>
@@ -164,7 +164,7 @@ export default function InteractiveMap() {
               <div className="grid grid-cols-2 gap-3">
                 <div className="rounded-[24px] bg-white p-4">
                   <div className="font-potta text-xs text-[#17496c]/90 mb-1">FLOOD RISK</div>
-                  <div className="font-bold mono-flood text-sm text-[#17496c]/70">{g.risk.label}</div>
+                  <div className="font-bold mono-flood text-sm text-[#17496c]/80">{g.risk.label}</div>
                   <div className="font-bold mono-flood text-xs text-[#17496c]/80 mt-1">Peak: {g.risk.peak_median_ft.toFixed(2)} ft</div>
                   <div className="font-bold mono-flood text-xs text-[#17496c]/80">Flood chance (48h): {(g.risk.prob_minor * 100).toFixed(0)}%</div>
                 </div>
