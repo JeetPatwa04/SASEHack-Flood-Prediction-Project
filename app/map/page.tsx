@@ -97,10 +97,9 @@ export default function InteractiveMap() {
           </div>
 
           {/* Map */}
-          <div className="min-h-[320px] overflow-hidden rounded-[32px]">
+          <div className="isolate min-h-[320px] overflow-hidden rounded-blob-sm">
             <GaugeMap gauges={gauges} selectedId={selectedId} onSelect={setSelectedId} />
           </div>
-
           {/* Right panel */}
           <div className="flex flex-col gap-3 overflow-y-auto">
 
