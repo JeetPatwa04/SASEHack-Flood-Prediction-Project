@@ -41,15 +41,15 @@ export default function Dashboard() {
       <NavBar />
       <div className="px-6 py-12">
         <h1 className="mb-10 text-center font-potta text-5xl text-white md:text-7xl">DASHBOARD</h1>
-        <div className="mx-auto grid max-w-5xl grid-cols-1 gap-4 rounded-blob bg-amber p-8 sm:grid-cols-2">
+        <div className="pop-stagger-soft mx-auto grid max-w-5xl grid-cols-1 gap-4 rounded-blob bg-amber p-8 sm:grid-cols-2">
           {stats.map((s) => (
-            <div key={s.label} className="animate-fade-up rounded-blob bg-white p-6">
-              <div className="font-bold mono-flood text-md text-navy/70">{s.label}</div>
+            <div key={s.label} className="rounded-blob bg-white p-6">
+              <div className="font-mono-flood text-xs text-navy/60">{s.label}</div>
               <div className="mt-2 font-potta text-4xl text-navy">{loading ? "…" : s.value}</div>
               {s.sub && <div className="mt-1 text-sm text-navy/70">{s.sub}</div>}
             </div>
           ))}
-        </div>
+        </div>        
         <div className="mx-auto mt-8 max-w-5xl overflow-hidden rounded-blob">
           <GaugeDashboard embedded />
         </div>

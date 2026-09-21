@@ -7,7 +7,7 @@ export default function Home() {
       <NavBar />
       <FloatingBubbles count={30} />
       <div className="flex min-h-[calc(100vh-92px)] items-center justify-center px-6">
-        <div className="animate-fade-up rounded-blob bg-white px-14 py-16 text-center shadow-xl">
+        <div className="animate-pop-in rounded-blob bg-white px-14 py-16 text-center shadow-xl">
           <h1 className="font-potta text-6xl text-navy md:text-8xl">FLOOD WATCH!</h1>
         </div>
       </div>

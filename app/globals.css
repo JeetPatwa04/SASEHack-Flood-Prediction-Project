@@ -64,3 +64,60 @@
   animation-timing-function: ease-in;
   animation-iteration-count: infinite;
 }
+
+@keyframes pop-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) rotate(-3deg);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.08) rotate(1deg);
+  }
+  80% {
+    transform: scale(0.97) rotate(-0.5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+.animate-pop-in {
+  animation: pop-in 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* Staggered pop for a group of items — apply alongside .animate-pop-in */
+.pop-stagger > * {
+  animation: pop-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+.pop-stagger > *:nth-child(1) { animation-delay: 0s; }
+.pop-stagger > *:nth-child(2) { animation-delay: 0.1s; }
+.pop-stagger > *:nth-child(3) { animation-delay: 0.2s; }
+
+@keyframes pop-in-soft {
+  0% {
+    opacity: 0;
+    transform: scale(0.92) translateY(8px);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1.015) translateY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-pop-in-soft {
+  animation: pop-in-soft 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.pop-stagger-soft > * {
+  animation: pop-in-soft 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+.pop-stagger-soft > *:nth-child(1) { animation-delay: 0s; }
+.pop-stagger-soft > *:nth-child(2) { animation-delay: 0.06s; }
+.pop-stagger-soft > *:nth-child(3) { animation-delay: 0.12s; }
+.pop-stagger-soft > *:nth-child(4) { animation-delay: 0.18s; }
