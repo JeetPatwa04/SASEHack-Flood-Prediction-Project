@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-20T22:53:44Z",
+ "generated_at": "2026-09-21T00:12:38Z",
  "model_version": "hgb-quantile-v1",
  "is_sample_data": false,
  "gauges": [
@@ -18,15 +18,11 @@
     "major": 24.0
    },
    "current": {
-    "time": "2026-09-20T22:00:00Z",
-    "stage_ft": 2.02,
+    "time": "2026-09-20T23:00:00Z",
+    "stage_ft": 2.01,
     "category": "none"
    },
    "observed": [
-    {
-     "time": "2026-09-17T23:00:00Z",
-     "stage_ft": 1.66
-    },
     {
      "time": "2026-09-18T00:00:00Z",
      "stage_ft": 1.66
@@ -310,64 +306,68 @@
     {
      "time": "2026-09-20T22:00:00Z",
      "stage_ft": 2.02
+    },
+    {
+     "time": "2026-09-20T23:00:00Z",
+     "stage_ft": 2.01
     }
    ],
    "forecast": [
     {
-     "valid_at": "2026-09-21T04:00:00Z",
+     "valid_at": "2026-09-21T05:00:00Z",
      "lead_hours": 6,
-     "low_ft": 1.9,
-     "median_ft": 1.93,
-     "high_ft": 2.02
-    },
-    {
-     "valid_at": "2026-09-21T10:00:00Z",
-     "lead_hours": 12,
-     "low_ft": 1.78,
-     "median_ft": 1.88,
-     "high_ft": 2.09
-    },
-    {
-     "valid_at": "2026-09-21T16:00:00Z",
-     "lead_hours": 18,
-     "low_ft": 1.67,
-     "median_ft": 1.79,
-     "high_ft": 1.86
-    },
-    {
-     "valid_at": "2026-09-21T22:00:00Z",
-     "lead_hours": 24,
-     "low_ft": 1.64,
-     "median_ft": 1.77,
-     "high_ft": 1.86
-    },
-    {
-     "valid_at": "2026-09-22T04:00:00Z",
-     "lead_hours": 30,
-     "low_ft": 1.52,
-     "median_ft": 1.56,
-     "high_ft": 1.57
-    },
-    {
-     "valid_at": "2026-09-22T10:00:00Z",
-     "lead_hours": 36,
-     "low_ft": 1.57,
-     "median_ft": 1.6,
-     "high_ft": 1.73
-    },
-    {
-     "valid_at": "2026-09-22T16:00:00Z",
-     "lead_hours": 42,
-     "low_ft": 1.48,
-     "median_ft": 1.62,
+     "low_ft": 1.89,
+     "median_ft": 1.91,
      "high_ft": 1.97
     },
     {
-     "valid_at": "2026-09-22T22:00:00Z",
+     "valid_at": "2026-09-21T11:00:00Z",
+     "lead_hours": 12,
+     "low_ft": 1.77,
+     "median_ft": 1.86,
+     "high_ft": 2.04
+    },
+    {
+     "valid_at": "2026-09-21T17:00:00Z",
+     "lead_hours": 18,
+     "low_ft": 1.67,
+     "median_ft": 1.78,
+     "high_ft": 1.89
+    },
+    {
+     "valid_at": "2026-09-21T23:00:00Z",
+     "lead_hours": 24,
+     "low_ft": 1.64,
+     "median_ft": 1.76,
+     "high_ft": 1.89
+    },
+    {
+     "valid_at": "2026-09-22T05:00:00Z",
+     "lead_hours": 30,
+     "low_ft": 1.51,
+     "median_ft": 1.59,
+     "high_ft": 1.68
+    },
+    {
+     "valid_at": "2026-09-22T11:00:00Z",
+     "lead_hours": 36,
+     "low_ft": 1.54,
+     "median_ft": 1.64,
+     "high_ft": 1.82
+    },
+    {
+     "valid_at": "2026-09-22T17:00:00Z",
+     "lead_hours": 42,
+     "low_ft": 1.47,
+     "median_ft": 1.61,
+     "high_ft": 1.96
+    },
+    {
+     "valid_at": "2026-09-22T23:00:00Z",
      "lead_hours": 48,
-     "low_ft": 1.43,
-     "median_ft": 1.65,
-     "high_ft": 2.16
+     "low_ft": 1.42,
+     "median_ft": 1.63,
+     "high_ft": 2.15
     }
    ],
    "nws_issued_at": "2026-09-20T12:43:00Z",
@@ -456,14 +456,14 @@
    "risk": {
     "category": "none",
     "label": "No flooding expected",
-    "peak_median_ft": 1.93,
-    "peak_high_ft": 2.16,
+    "peak_median_ft": 1.91,
+    "peak_high_ft": 2.15,
     "prob_minor": 0.0
    },
    "rain_mm": {
-    "past_24h": 0.4,
+    "past_24h": 0.0,
     "next_24h": 1.1,
-    "next_48h": 13.1
+    "next_48h": 6.8
    }
   },
   {
@@ -481,15 +481,11 @@
     "major": 32.0
    },
    "current": {
-    "time": "2026-09-20T22:00:00Z",
-    "stage_ft": 3.17,
+    "time": "2026-09-20T23:00:00Z",
+    "stage_ft": 3.26,
     "category": "none"
    },
    "observed": [
-    {
-     "time": "2026-09-17T23:00:00Z",
-     "stage_ft": 2.92
-    },
     {
      "time": "2026-09-18T00:00:00Z",
      "stage_ft": 2.92
@@ -772,65 +768,69 @@
     },
     {
      "time": "2026-09-20T22:00:00Z",
-     "stage_ft": 3.17
+     "stage_ft": 3.18
+    },
+    {
+     "time": "2026-09-20T23:00:00Z",
+     "stage_ft": 3.26
     }
    ],
    "forecast": [
     {
-     "valid_at": "2026-09-21T04:00:00Z",
+     "valid_at": "2026-09-21T05:00:00Z",
      "lead_hours": 6,
-     "low_ft": 3.12,
-     "median_ft": 3.28,
-     "high_ft": 3.37
+     "low_ft": 3.24,
+     "median_ft": 3.4,
+     "high_ft": 3.58
     },
     {
-     "valid_at": "2026-09-21T10:00:00Z",
+     "valid_at": "2026-09-21T11:00:00Z",
      "lead_hours": 12,
-     "low_ft": 3.07,
+     "low_ft": 3.21,
      "median_ft": 3.34,
-     "high_ft": 3.4
+     "high_ft": 3.45
     },
     {
-     "valid_at": "2026-09-21T16:00:00Z",
+     "valid_at": "2026-09-21T17:00:00Z",
      "lead_hours": 18,
-     "low_ft": 3.0,
-     "median_ft": 3.28,
-     "high_ft": 3.3
+     "low_ft": 3.09,
+     "median_ft": 3.31,
+     "high_ft": 3.32
     },
     {
-     "valid_at": "2026-09-21T22:00:00Z",
+     "valid_at": "2026-09-21T23:00:00Z",
      "lead_hours": 24,
-     "low_ft": 3.0,
-     "median_ft": 3.17,
-     "high_ft": 3.25
+     "low_ft": 3.04,
+     "median_ft": 3.2,
+     "high_ft": 3.34
     },
     {
-     "valid_at": "2026-09-22T04:00:00Z",
+     "valid_at": "2026-09-22T05:00:00Z",
      "lead_hours": 30,
-     "low_ft": 2.89,
-     "median_ft": 3.12,
-     "high_ft": 3.37
+     "low_ft": 2.95,
+     "median_ft": 3.22,
+     "high_ft": 3.76
     },
     {
-     "valid_at": "2026-09-22T10:00:00Z",
+     "valid_at": "2026-09-22T11:00:00Z",
      "lead_hours": 36,
-     "low_ft": 2.84,
-     "median_ft": 3.03,
-     "high_ft": 3.04
+     "low_ft": 2.91,
+     "median_ft": 3.1,
+     "high_ft": 3.17
     },
     {
-     "valid_at": "2026-09-22T16:00:00Z",
+     "valid_at": "2026-09-22T17:00:00Z",
      "lead_hours": 42,
-     "low_ft": 2.78,
-     "median_ft": 2.97,
-     "high_ft": 3.03
+     "low_ft": 2.87,
+     "median_ft": 3.03,
+     "high_ft": 3.22
     },
     {
-     "valid_at": "2026-09-22T22:00:00Z",
+     "valid_at": "2026-09-22T23:00:00Z",
      "lead_hours": 48,
-     "low_ft": 2.77,
-     "median_ft": 2.97,
-     "high_ft": 3.11
+     "low_ft": 2.87,
+     "median_ft": 3.04,
+     "high_ft": 3.12
     }
    ],
    "nws_issued_at": "2026-09-20T12:43:00Z",
@@ -919,14 +919,14 @@
    "risk": {
     "category": "none",
     "label": "No flooding expected",
-    "peak_median_ft": 3.34,
-    "peak_high_ft": 3.4,
+    "peak_median_ft": 3.4,
+    "peak_high_ft": 3.76,
     "prob_minor": 0.0
    },
    "rain_mm": {
     "past_24h": 0.0,
     "next_24h": 0.0,
-    "next_48h": 4.2
+    "next_48h": 6.7
    }
   },
   {
@@ -944,15 +944,11 @@
     "major": 22.0
    },
    "current": {
-    "time": "2026-09-20T22:00:00Z",
-    "stage_ft": 2.86,
+    "time": "2026-09-20T23:00:00Z",
+    "stage_ft": 2.84,
     "category": "none"
    },
    "observed": [
-    {
-     "time": "2026-09-17T23:00:00Z",
-     "stage_ft": 2.88
-    },
     {
      "time": "2026-09-18T00:00:00Z",
      "stage_ft": 2.95
@@ -1236,64 +1232,68 @@
     {
      "time": "2026-09-20T22:00:00Z",
      "stage_ft": 2.86
+    },
+    {
+     "time": "2026-09-20T23:00:00Z",
+     "stage_ft": 2.84
     }
    ],
    "forecast": [
     {
-     "valid_at": "2026-09-21T04:00:00Z",
+     "valid_at": "2026-09-21T05:00:00Z",
      "lead_hours": 6,
-     "low_ft": 2.68,
+     "low_ft": 2.64,
      "median_ft": 2.68,
-     "high_ft": 2.73
+     "high_ft": 2.72
     },
     {
-     "valid_at": "2026-09-21T10:00:00Z",
+     "valid_at": "2026-09-21T11:00:00Z",
      "lead_hours": 12,
-     "low_ft": 2.57,
-     "median_ft": 2.6,
-     "high_ft": 2.7
+     "low_ft": 2.56,
+     "median_ft": 2.61,
+     "high_ft": 2.72
     },
     {
-     "valid_at": "2026-09-21T16:00:00Z",
+     "valid_at": "2026-09-21T17:00:00Z",
      "lead_hours": 18,
-     "low_ft": 2.54,
-     "median_ft": 2.61,
+     "low_ft": 2.55,
+     "median_ft": 2.64,
      "high_ft": 2.86
     },
     {
-     "valid_at": "2026-09-21T22:00:00Z",
+     "valid_at": "2026-09-21T23:00:00Z",
      "lead_hours": 24,
-     "low_ft": 2.66,
-     "median_ft": 2.85,
-     "high_ft": 2.95
+     "low_ft": 2.65,
+     "median_ft": 2.82,
+     "high_ft": 2.93
     },
     {
-     "valid_at": "2026-09-22T04:00:00Z",
+     "valid_at": "2026-09-22T05:00:00Z",
      "lead_hours": 30,
-     "low_ft": 2.64,
-     "median_ft": 2.67,
-     "high_ft": 2.82
-    },
-    {
-     "valid_at": "2026-09-22T10:00:00Z",
-     "lead_hours": 36,
-     "low_ft": 2.54,
+     "low_ft": 2.62,
      "median_ft": 2.63,
-     "high_ft": 2.8
+     "high_ft": 2.79
     },
     {
-     "valid_at": "2026-09-22T16:00:00Z",
+     "valid_at": "2026-09-22T11:00:00Z",
+     "lead_hours": 36,
+     "low_ft": 2.55,
+     "median_ft": 2.63,
+     "high_ft": 2.81
+    },
+    {
+     "valid_at": "2026-09-22T17:00:00Z",
      "lead_hours": 42,
      "low_ft": 2.58,
      "median_ft": 2.6,
-     "high_ft": 3.09
+     "high_ft": 3.1
     },
     {
-     "valid_at": "2026-09-22T22:00:00Z",
+     "valid_at": "2026-09-22T23:00:00Z",
      "lead_hours": 48,
-     "low_ft": 2.72,
-     "median_ft": 2.85,
-     "high_ft": 3.86
+     "low_ft": 2.7,
+     "median_ft": 2.81,
+     "high_ft": 3.81
     }
    ],
    "nws_issued_at": "2026-09-20T14:48:00Z",
@@ -1350,14 +1350,14 @@
    "risk": {
     "category": "none",
     "label": "No flooding expected",
-    "peak_median_ft": 2.85,
-    "peak_high_ft": 3.86,
+    "peak_median_ft": 2.82,
+    "peak_high_ft": 3.81,
     "prob_minor": 0.0
    },
    "rain_mm": {
     "past_24h": 0.0,
     "next_24h": 0.0,
-    "next_48h": 9.7
+    "next_48h": 8.8
    }
   },
   {
@@ -1375,19 +1375,11 @@
     "major": 26.4
    },
    "current": {
-    "time": "2026-09-20T21:00:00Z",
-    "stage_ft": 1.26,
+    "time": "2026-09-20T23:00:00Z",
+    "stage_ft": 1.42,
     "category": "none"
    },
    "observed": [
-    {
-     "time": "2026-09-17T22:00:00Z",
-     "stage_ft": 1.38
-    },
-    {
-     "time": "2026-09-17T23:00:00Z",
-     "stage_ft": 1.41
-    },
     {
      "time": "2026-09-18T00:00:00Z",
      "stage_ft": 1.43
@@ -1667,64 +1659,72 @@
     {
      "time": "2026-09-20T21:00:00Z",
      "stage_ft": 1.26
+    },
+    {
+     "time": "2026-09-20T22:00:00Z",
+     "stage_ft": 1.31
+    },
+    {
+     "time": "2026-09-20T23:00:00Z",
+     "stage_ft": 1.42
     }
    ],
    "forecast": [
     {
-     "valid_at": "2026-09-21T03:00:00Z",
+     "valid_at": "2026-09-21T05:00:00Z",
      "lead_hours": 6,
-     "low_ft": 1.27,
-     "median_ft": 1.43,
-     "high_ft": 1.48
+     "low_ft": 1.53,
+     "median_ft": 1.81,
+     "high_ft": 1.82
     },
     {
-     "valid_at": "2026-09-21T09:00:00Z",
+     "valid_at": "2026-09-21T11:00:00Z",
      "lead_hours": 12,
-     "low_ft": 1.2,
-     "median_ft": 1.26,
+     "low_ft": 1.41,
+     "median_ft": 1.53,
+     "high_ft": 1.6
+    },
+    {
+     "valid_at": "2026-09-21T17:00:00Z",
+     "lead_hours": 18,
+     "low_ft": 1.3,
+     "median_ft": 1.39,
+     "high_ft": 1.54
+    },
+    {
+     "valid_at": "2026-09-21T23:00:00Z",
+     "lead_hours": 24,
+     "low_ft": 1.19,
+     "median_ft": 1.41,
+     "high_ft": 1.57
+    },
+    {
+     "valid_at": "2026-09-22T05:00:00Z",
+     "lead_hours": 30,
+     "low_ft": 1.27,
+     "median_ft": 1.29,
+     "high_ft": 1.72
+    },
+    {
+     "valid_at": "2026-09-22T11:00:00Z",
+     "lead_hours": 36,
+     "low_ft": 1.06,
+     "median_ft": 1.14,
      "high_ft": 1.36
     },
     {
-     "valid_at": "2026-09-21T15:00:00Z",
-     "lead_hours": 18,
-     "low_ft": 1.09,
-     "median_ft": 1.16,
-     "high_ft": 1.37
-    },
-    {
-     "valid_at": "2026-09-21T21:00:00Z",
-     "lead_hours": 24,
-     "low_ft": 1.09,
-     "median_ft": 1.1,
-     "high_ft": 1.41
-    },
-    {
-     "valid_at": "2026-09-22T03:00:00Z",
-     "lead_hours": 30,
-     "low_ft": 1.05,
-     "median_ft": 1.16,
-     "high_ft": 1.42
-    },
-    {
-     "valid_at": "2026-09-22T09:00:00Z",
-     "lead_hours": 36,
-     "low_ft": 0.98,
-     "median_ft": 1.09,
-     "high_ft": 1.25
-    },
-    {
-     "valid_at": "2026-09-22T15:00:00Z",
+     "valid_at": "2026-09-22T17:00:00Z",
      "lead_hours": 42,
-     "low_ft": 0.97,
-     "median_ft": 1.05,
-     "high_ft": 1.27
+     "low_ft": 0.94,
+     "median_ft": 1.1,
+     "high_ft": 1.39
     },
     {
-     "valid_at": "2026-09-22T21:00:00Z",
+     "valid_at": "2026-09-22T23:00:00Z",
      "lead_hours": 48,
-     "low_ft": 1.1,
-     "median_ft": 1.1,
-     "high_ft": 1.29
+     "low_ft": 1.08,
+     "median_ft": 1.09,
+     "high_ft": 1.39
     }
    ],
    "nws_issued_at": "2026-09-20T14:48:00Z",
@@ -1781,14 +1781,14 @@
    "risk": {
     "category": "none",
     "label": "No flooding expected",
-    "peak_median_ft": 1.43,
-    "peak_high_ft": 1.48,
+    "peak_median_ft": 1.81,
+    "peak_high_ft": 1.82,
     "prob_minor": 0.0
    },
    "rain_mm": {
     "past_24h": 0.0,
     "next_24h": 0.0,
-    "next_48h": 5.8
+    "next_48h": 6.1
    }
   },
   {
@@ -1806,19 +1806,11 @@
     "major": 22.0
    },
    "current": {
-    "time": "2026-09-20T21:00:00Z",
-    "stage_ft": 3.3,
+    "time": "2026-09-20T23:00:00Z",
+    "stage_ft": 3.29,
     "category": "none"
    },
    "observed": [
-    {
-     "time": "2026-09-17T22:00:00Z",
-     "stage_ft": 3.28
-    },
-    {
-     "time": "2026-09-17T23:00:00Z",
-     "stage_ft": 3.27
-    },
     {
      "time": "2026-09-18T00:00:00Z",
      "stage_ft": 3.26
@@ -2098,64 +2090,72 @@
     {
      "time": "2026-09-20T21:00:00Z",
      "stage_ft": 3.3
+    },
+    {
+     "time": "2026-09-20T22:00:00Z",
+     "stage_ft": 3.29
+    },
+    {
+     "time": "2026-09-20T23:00:00Z",
+     "stage_ft": 3.29
     }
    ],
    "forecast": [
     {
-     "valid_at": "2026-09-21T03:00:00Z",
+     "valid_at": "2026-09-21T05:00:00Z",
      "lead_hours": 6,
-     "low_ft": 3.28,
-     "median_ft": 3.3,
-     "high_ft": 3.32
+     "low_ft": 3.25,
+     "median_ft": 3.26,
+     "high_ft": 3.29
     },
     {
-     "valid_at": "2026-09-21T09:00:00Z",
+     "valid_at": "2026-09-21T11:00:00Z",
      "lead_hours": 12,
-     "low_ft": 3.28,
-     "median_ft": 3.31,
-     "high_ft": 3.38
+     "low_ft": 3.24,
+     "median_ft": 3.26,
+     "high_ft": 3.34
     },
     {
-     "valid_at": "2026-09-21T15:00:00Z",
+     "valid_at": "2026-09-21T17:00:00Z",
      "lead_hours": 18,
-     "low_ft": 3.29,
-     "median_ft": 3.32,
-     "high_ft": 3.37
+     "low_ft": 3.28,
+     "median_ft": 3.29,
+     "high_ft": 3.45
     },
     {
-     "valid_at": "2026-09-21T21:00:00Z",
+     "valid_at": "2026-09-21T23:00:00Z",
      "lead_hours": 24,
+     "low_ft": 3.34,
+     "median_ft": 3.44,
+     "high_ft": 3.48
+    },
+    {
+     "valid_at": "2026-09-22T05:00:00Z",
+     "lead_hours": 30,
+     "low_ft": 3.33,
+     "median_ft": 3.46,
+     "high_ft": 3.6
+    },
+    {
+     "valid_at": "2026-09-22T11:00:00Z",
+     "lead_hours": 36,
+     "low_ft": 3.33,
+     "median_ft": 3.38,
+     "high_ft": 3.58
+    },
+    {
+     "valid_at": "2026-09-22T17:00:00Z",
+     "lead_hours": 42,
      "low_ft": 3.3,
      "median_ft": 3.34,
-     "high_ft": 3.47
+     "high_ft": 3.72
     },
     {
-     "valid_at": "2026-09-22T03:00:00Z",
-     "lead_hours": 30,
-     "low_ft": 3.29,
-     "median_ft": 3.32,
-     "high_ft": 3.49
-    },
-    {
-     "valid_at": "2026-09-22T09:00:00Z",
-     "lead_hours": 36,
-     "low_ft": 3.3,
-     "median_ft": 3.35,
-     "high_ft": 3.42
-    },
-    {
-     "valid_at": "2026-09-22T15:00:00Z",
-     "lead_hours": 42,
-     "low_ft": 3.29,
-     "median_ft": 3.37,
-     "high_ft": 3.57
-    },
-    {
-     "valid_at": "2026-09-22T21:00:00Z",
+     "valid_at": "2026-09-22T23:00:00Z",
      "lead_hours": 48,
-     "low_ft": 3.3,
+     "low_ft": 3.31,
      "median_ft": 3.36,
-     "high_ft": 3.43
+     "high_ft": 3.65
     }
    ],
    "nws_issued_at": "2026-09-20T14:48:00Z",
@@ -2212,14 +2212,14 @@
    "risk": {
     "category": "none",
     "label": "No flooding expected",
-    "peak_median_ft": 3.37,
-    "peak_high_ft": 3.57,
+    "peak_median_ft": 3.46,
+    "peak_high_ft": 3.72,
     "prob_minor": 0.0
    },
    "rain_mm": {
     "past_24h": 0.0,
-    "next_24h": 9.7,
-    "next_48h": 20.3
+    "next_24h": 1.8,
+    "next_48h": 15.5
    }
   }
  ]
