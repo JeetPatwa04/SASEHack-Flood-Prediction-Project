@@ -186,20 +186,20 @@ export default function InteractiveMap() {
         {/* Scoreboard */}
         {scores && (
           <div className="mx-auto mt-6 max-w-6xl rounded-[40px] bg-[#ffa600] p-6">
-            <div className="mb-1 font-potta text-xl text-white">HOW ACCURATE IS OUR MODEL?</div>
-            <div className="font-mono-flood text-m text-white/70 mb-4">Our ML Model vs Official Forecasts </div>
+            <div className="mb-1 font-potta text-xl text-navy">HOW ACCURATE IS OUR MODEL?</div>
+            <div className="font-mono-flood text-md text-navy mb-4">Our ML Model vs Official Forecasts </div>
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
               {scoreHorizons.map(h => {
                 const row = scores.horizons[h];
                 if (!row) return null;
                 return (
                   <div key={h} className="rounded-[24px] bg-white p-4">
-                    <div className="font-potta text-xs text-[#17496c]/60 mb-1">{h}H AHEAD</div>
+                    <div className="font-potta text-xs text-[#17496c]/80 mb-1">{h}H AHEAD</div>
                     <div className="font-potta text-2xl text-[#17496c]">+{row.skill_pct.toFixed(0)}%</div>
-                    <div className="font-mono-flood text-xs text-[#17496c]/60 mt-1">better than Official forecast</div>
+                    <div className="font-mono-flood text-xs text-[#17496c]/80 mt-1">better than Official forecast</div>
                     <div className="mt-2 space-y-1">
-                      <div className="font-mono-flood text-xs text-[#17496c]/70">Our error: <span className="font-bold text-[#17496c]">{row.mae_ours.toFixed(2)} ft</span></div>
-                      <div className="font-mono-flood text-xs text-[#17496c]/70">Basic: <span className="text-[#17496c]">{row.mae_persistence.toFixed(2)} ft</span></div>
+                      <div className="font-mono-flood text-xs text-[#17496c]/80">Our error: <span className="font-bold text-[#17496c]">{row.mae_ours.toFixed(2)} ft</span></div>
+                      <div className="font-mono-flood text-xs text-[#17496c]/80">Official Forecast: <span className="font-bold text-[#17496c]">{row.mae_persistence.toFixed(2)} ft</span></div>
                     </div>
                   </div>
                 );
