@@ -50,7 +50,9 @@ export default function Dashboard() {
             </div>
           ))}
         </div>
-        <div className="mx-auto mt-8 max-w-5xl overflow-hidden rounded-blob" />
+        <div className="mx-auto mt-8 max-w-5xl overflow-hidden rounded-blob">
+          <GaugeDashboard embedded />
+        </div>
       </div>
     </div>
   );
