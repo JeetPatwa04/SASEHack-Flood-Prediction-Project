@@ -125,7 +125,7 @@ export default function InteractiveMap() {
 
             {/* Chart */}
             <div className="rounded-[24px] bg-white p-4 flex-1">
-              <span className="mb-2 inline-block rounded-full bg-[#ffa600] px-3 py-1 font-potta text-xs text-white">River Level Forecast</span>
+              <span className="mb-2 inline-block rounded-full bg-[#ffa600] px-3 py-1 font-bold mono-flood text-sm text-white">River Level Forecast</span>
               <div className="flex gap-3 flex-wrap mb-2">
                 {[
                   { label: "Observed", color: "#17496c" },
@@ -165,7 +165,7 @@ export default function InteractiveMap() {
               <div className="grid grid-cols-2 gap-3">
                 <div className="rounded-[24px] bg-white p-4">
                   <div className="font-potta text-xs text-[#17496c]/90 mb-1">FLOOD RISK</div>
-                  <div className="font-potta text-sm text-[#17496c]/70">{g.risk.label}</div>
+                  <div className="font-bold mono-flood text-sm text-[#17496c]/70">{g.risk.label}</div>
                   <div className="font-bold mono-flood text-xs text-[#17496c]/80 mt-1">Peak: {g.risk.peak_median_ft.toFixed(2)} ft</div>
                   <div className="font-bold mono-flood text-xs text-[#17496c]/80">Flood chance (48h): {(g.risk.prob_minor * 100).toFixed(0)}%</div>
                 </div>
