@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import NavBar from "@/components/NavBar";
+import GaugeDashboard from "@/components/GaugeDashboard";
 
 type GaugeSummary = {
   site_id: string; name: string;
@@ -31,7 +32,7 @@ export default function Dashboard() {
   const stats = [
     { label: "GAUGES MONITORED", value: data ? String(data.gauges.length) : "—" },
     { label: "HIGHEST RISK NOW", value: highestRisk?.risk.category.toUpperCase() ?? "—", sub: highestRisk?.name },
-    { label: "OUR ML BEATS BASIC FORECAST BY", value: avgSkill24h !== null ? `+${avgSkill24h}%` : "—" },
+    { label: "MODEL SKILL VS PERSISTENCE (24H)", value: avgSkill24h !== null ? `+${avgSkill24h}%` : "—" },
     { label: "DATA SOURCE", value: data ? (data.is_sample_data ? "SAMPLE" : "LIVE") : "—" },
   ];
 
@@ -51,6 +52,7 @@ export default function Dashboard() {
         </div>
 
         <div className="mx-auto mt-8 max-w-5xl overflow-hidden rounded-[40px]">
+          <GaugeDashboard embedded />
         </div>
       </div>
     </div>

@@ -137,13 +137,14 @@ export default function InteractiveMap() {
                 ))}
               </div>
               <ResponsiveContainer width="100%" height={160}>
+
                 <ComposedChart data={chartData}>
                   <XAxis dataKey="time" tick={{ fontSize: 9 }} tickFormatter={t => new Date(t).toLocaleDateString("en-US", { month: "short", day: "numeric" })} minTickGap={30} />
                   <YAxis tick={{ fontSize: 9 }} unit=" ft" width={45} />
                   <Tooltip
                     formatter={(v: any) => `${Number(v).toFixed(2)} ft`}
                     contentStyle={{ background: "white", border: "1px solid #17496c", borderRadius: "8px" }}
-                    labelStyle={{ display: "none" }}
+                    labelStyle={{ color: "#17496c", fontSize: "11px" }}
                     itemStyle={{ color: "#17496c" }}
                    
                   />
