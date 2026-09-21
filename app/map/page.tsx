@@ -100,11 +100,12 @@ export default function InteractiveMap() {
           <div className="isolate min-h-[320px] overflow-hidden rounded-blob-sm">
             <GaugeMap gauges={gauges} selectedId={selectedId} onSelect={setSelectedId} />
           </div>
+
           {/* Right panel */}
-          <div className="flex flex-col gap-3 overflow-y-auto">
+          <div className="flex flex-col gap-3 overflow-y-auto h-full min-h-0">
 
             {/* Status card */}
-            <div className="rounded-[24px] bg-white p-4">
+            <div className="rounded-[24px] bg-white p-4 shrink-0">
               <div className="font-potta text-lg text-[#17496c]">{g?.name ?? "Select a gauge"}</div>
               {g && (
                 <div className="mt-2 flex items-end justify-between">
@@ -122,9 +123,9 @@ export default function InteractiveMap() {
               )}
             </div>
 
-            {/* Chart */}
-            <div className="rounded-[24px] bg-white p-4 flex-1">
-              <span className="mb-2 inline-block rounded-full bg-[#ffa600] px-3 py-1 font-bold mono-flood text-sm text-white">River Level Forecast</span>
+            {/* Chart - Scaled to fill panel vertically */}
+            <div className="rounded-[24px] bg-white p-4 flex-1 flex flex-col min-h-[220px]">
+              <span className="mb-2 inline-block rounded-full bg-[#ffa600] px-3 py-1 font-bold mono-flood text-sm text-white self-start">River Level Forecast</span>
               <div className="flex gap-3 flex-wrap mb-2">
                 {[
                   { label: "Observed", color: "#17496c" },
@@ -138,31 +139,58 @@ export default function InteractiveMap() {
                 ))}
               </div>
 
-              <ResponsiveContainer width="100%" height={200}>
-                <ComposedChart data={chartData}>
-                  <XAxis dataKey="time" tick={{ fontSize: 11 }} tickFormatter={t => new Date(t).toLocaleDateString("en-US", { month: "short", day: "numeric" })} minTickGap={30} />
-                  <YAxis tick={{ fontSize: 11 }} unit=" ft" width={45} />
-                  <Tooltip
-                    formatter={(v: any) => `${Number(v).toFixed(2)} ft`}
-                    contentStyle={{ background: "white", border: "1px solid #17496c", borderRadius: "8px" }}
-                    labelStyle={{ display: "none" }}
-                    itemStyle={{ color: "#17496c" }}
+              {/* Flex wrapper for full responsive scaling */}
+              <div className="flex-1 w-full min-h-0">
+                <ResponsiveContainer width="100%" height="100%">
+                  <ComposedChart data={chartData}>
+                    <XAxis dataKey="time" tick={{ fontSize: 11 }} tickFormatter={t => new Date(t).toLocaleDateString("en-US", { month: "short", day: "numeric" })} minTickGap={30} />
+                    <YAxis tick={{ fontSize: 11 }} unit=" ft" width={45} />
+                    <Tooltip
+                    labelFormatter={(label) =>
+                      label ? new Date(String(label)).toLocaleString("en-US", {
+                        month: "short",
+                        day: "numeric",
+                        hour: "numeric",
+                        minute: "2-digit",
+                      }) : ""
+                    }
+                    formatter={(v: any, name: any) => [
+                      `${Number(v).toFixed(2)} ft`,
+                      String(name) === "observed" ? "Observed" : String(name) === "forecast" ? "Our forecast" : "NWS forecast",
+                    ]}
+                    contentStyle={{
+                      background: "#ffffff",
+                      border: "1px solid #17496c",
+                      borderRadius: "8px",
+                      padding: "8px 12px",
+                    }}
+                    labelStyle={{
+                      color: "#17496c",
+                      fontWeight: "bold",
+                      marginBottom: "4px",
+                    }}
+                    itemStyle={{
+                      color: "#17496c",
+                      paddingTop: "2px",
+                      paddingBottom: "2px",
+                    }}
                   />
-                  {g && Object.entries(g.thresholds_ft).map(([name, val]) => (
-                    <ReferenceLine key={name} y={val as number} stroke={name === "minor" ? "#f97316" : name === "moderate" ? "#ef4444" : name === "major" ? "#dc2626" : "#f59e0b"} strokeDasharray="3 3" />
-                  ))}
-                  <Area dataKey="high" fill="#2dd4bf20" stroke="none" />
-                  <Area dataKey="low" fill="white" stroke="none" />
-                  <Line dataKey="observed" stroke="#17496c" dot={false} strokeWidth={2} connectNulls />
-                  <Line dataKey="forecast" stroke="#2dd4bf" dot={false} strokeWidth={2} strokeDasharray="4 2" connectNulls />
-                  <Line dataKey="nws" stroke="#f59e0b" dot={{ r: 2 }} strokeWidth={1.5} connectNulls strokeDasharray="2 3" />
-                </ComposedChart>
-              </ResponsiveContainer>
+                    {g && Object.entries(g.thresholds_ft).map(([name, val]) => (
+                      <ReferenceLine key={name} y={val as number} stroke={name === "minor" ? "#f97316" : name === "moderate" ? "#ef4444" : name === "major" ? "#dc2626" : "#f59e0b"} strokeDasharray="3 3" />
+                    ))}
+                    <Area dataKey="high" fill="#2dd4bf20" stroke="none" />
+                    <Area dataKey="low" fill="white" stroke="none" />
+                    <Line dataKey="observed" stroke="#17496c" dot={false} strokeWidth={2} connectNulls />
+                    <Line dataKey="forecast" stroke="#2dd4bf" dot={false} strokeWidth={2} strokeDasharray="4 2" connectNulls />
+                    <Line dataKey="nws" stroke="#f59e0b" dot={{ r: 2 }} strokeWidth={1.5} connectNulls strokeDasharray="2 3" />
+                  </ComposedChart>
+                </ResponsiveContainer>
+              </div>
             </div>
 
             {/* Risk + Rain */}
             {g && (
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-2 gap-3 shrink-0">
                 <div className="rounded-[24px] bg-white p-4">
                   <div className="font-potta text-xs text-[#17496c]/90 mb-1">FLOOD RISK</div>
                   <div className="font-bold mono-flood text-sm text-[#17496c]/80">{g.risk.label}</div>
