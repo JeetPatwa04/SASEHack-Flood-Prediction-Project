@@ -10,7 +10,7 @@ export default function Home() {
       />
       <div className="flex min-h-[calc(100vh-92px)] items-center justify-center px-6">
         <div className="animate-fade-up rounded-blob bg-white px-14 py-16 text-center shadow-xl">
-          <h1 className="font-potta text-6xl text-navy md:text-8xl">FLOOD-WATCH!</h1>
+          <h1 className="font-potta text-6xl text-navy md:text-8xl">FLOOD WATCH!</h1>
           <div className="mt-6 flex items-center justify-center gap-2 font-mono-flood text-sm text-navy/70" />
         </div>
       </div>
