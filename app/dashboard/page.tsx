@@ -32,28 +32,36 @@ export default function Dashboard() {
   const stats = [
     { label: "GAUGES MONITORED", value: data ? String(data.gauges.length) : "—" },
     { label: "HIGHEST RISK NOW", value: highestRisk?.risk.category.toUpperCase() ?? "—", sub: highestRisk?.name },
+<<<<<<< HEAD
     { label: "MODEL SKILL VS PERSISTENCE (24H)", value: avgSkill24h !== null ? `+${avgSkill24h}%` : "—" },
+=======
+    { label: "ML PREDICTION ACCURACY OVER FORECAST:", value: avgSkill24h !== null ? `+${avgSkill24h}%` : "—" },
+>>>>>>> 15cfbcf11aad3ad0e431d752df5e7151d208755e
     { label: "DATA SOURCE", value: data ? (data.is_sample_data ? "SAMPLE" : "LIVE") : "—" },
   ];
 
   return (
-    <div className="min-h-screen bg-[#17496c]">
+    <div className="min-h-screen bg-navy">
       <NavBar />
       <div className="px-6 py-12">
         <h1 className="mb-10 text-center font-potta text-5xl text-white md:text-7xl">DASHBOARD</h1>
-        <div className="mx-auto grid max-w-5xl grid-cols-1 gap-4 rounded-[40px] bg-[#ffa600] p-8 sm:grid-cols-2">
+        <div className="mx-auto grid max-w-5xl grid-cols-1 gap-4 rounded-blob bg-amber p-8 sm:grid-cols-2">
           {stats.map((s) => (
-            <div key={s.label} className="animate-fade-up rounded-[40px] bg-white p-6">
-              <div className="font-mono-flood text-xs text-[#17496c]/60">{s.label}</div>
-              <div className="mt-2 font-potta text-4xl text-[#17496c]">{loading ? "…" : s.value}</div>
-              {s.sub && <div className="mt-1 text-sm text-[#17496c]/70">{s.sub}</div>}
+            <div key={s.label} className="animate-fade-up rounded-blob bg-white p-6">
+              <div className="font-mono-flood text-xs text-navy/60">{s.label}</div>
+              <div className="mt-2 font-potta text-4xl text-navy">{loading ? "…" : s.value}</div>
+              {s.sub && <div className="mt-1 text-sm text-navy/70">{s.sub}</div>}
             </div>
           ))}
         </div>
+<<<<<<< HEAD
 
         <div className="mx-auto mt-8 max-w-5xl overflow-hidden rounded-[40px]">
           <GaugeDashboard embedded />
         </div>
+=======
+        <div className="mx-auto mt-8 max-w-5xl overflow-hidden rounded-blob" />
+>>>>>>> 15cfbcf11aad3ad0e431d752df5e7151d208755e
       </div>
     </div>
   );

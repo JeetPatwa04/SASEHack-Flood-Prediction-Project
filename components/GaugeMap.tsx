@@ -15,10 +15,9 @@ const CATEGORY_COLOR: Record<string, string> = {
 export default function GaugeMap({ gauges, selectedId, onSelect }: {
   gauges: GaugeSummary[]; selectedId: string | null; onSelect: (id: string) => void;
 }) {
-  const center: LatLngExpression = [37.2, -80.0]; // central Virginia
-
+  const center: LatLngExpression = [37.2, -80.0];
   return (
-    <MapContainer center={center} zoom={7} scrollWheelZoom={false} className="h-full w-full rounded-[32px]">
+    <MapContainer center={center} zoom={7} scrollWheelZoom={false} className="h-full w-full rounded-blob-sm">
       <TileLayer attribution="&copy; OpenStreetMap contributors" url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
       {gauges.map((g) => (
         <CircleMarker
@@ -28,10 +27,7 @@ export default function GaugeMap({ gauges, selectedId, onSelect }: {
           pathOptions={{ color: "#17496c", weight: 2, fillColor: CATEGORY_COLOR[g.risk.category] ?? "#4caf82", fillOpacity: 0.9 }}
           eventHandlers={{ click: () => onSelect(g.site_id) }}
         >
-          <Popup>
-            <strong>{g.name}</strong><br />
-            {g.current.stage_ft.toFixed(2)} ft — {g.risk.category}
-          </Popup>
+          <Popup><strong>{g.name}</strong><br />{g.current.stage_ft.toFixed(2)} ft — {g.risk.category}</Popup>
         </CircleMarker>
       ))}
     </MapContainer>

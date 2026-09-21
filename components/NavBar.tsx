@@ -11,7 +11,7 @@ const LINKS = [
 export default function NavBar() {
   const pathname = usePathname();
   return (
-    <nav className="sticky top-0 z-50 w-full bg-[#48b3ff]/50 backdrop-blur-sm">
+    <nav className="sticky top-0 z-50 w-full bg-skyblue/50 backdrop-blur-sm">
       <div className="mx-auto flex max-w-6xl items-center justify-center gap-6 px-8 py-[22px]">
         {LINKS.map((link) => {
           const active = pathname === link.href;
@@ -19,8 +19,8 @@ export default function NavBar() {
             <Link
               key={link.href}
               href={link.href}
-              className={`flex-1 max-w-[330px] rounded-[40px] py-[10px] text-center font-potta text-[15px] tracking-wide transition-colors ${
-                active ? "bg-white text-[#17496c]" : "bg-white/90 text-[#17496c] hover:bg-white"
+              className={`flex-1 max-w-[330px] rounded-blob py-[10px] text-center font-potta text-[15px] tracking-wide transition-colors ${
+                active ? "bg-white text-navy" : "bg-white/90 text-navy hover:bg-white"
               }`}
             >
               {link.label}
