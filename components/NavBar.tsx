@@ -19,7 +19,7 @@ export default function NavBar() {
             <Link
               key={link.href}
               href={link.href}
-              className={`flex-1 max-w-[330px] rounded-blob py-[10px] text-center font-potta text-[15px] tracking-wide transition-colors ${
+              className={`flex-1 max-w-[330px] rounded-blob py-[10px] text-center font-potta text-[25px] tracking-wide transition-colors ${
                 active ? "bg-white text-navy" : "bg-white/90 text-navy hover:bg-white"
               }`}
             >
